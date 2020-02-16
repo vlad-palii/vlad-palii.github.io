@@ -52,7 +52,7 @@ export default function AirQuality() {
 
     return new Promise(resolve => {
       //37bff4af-0639-4402-a226-e188eb44984e - new key
-      request.get("http://api.airvisual.com/v2/city?city=kyiv&state=Kyiv&country=Ukraine&key=37bff4af-0639-4402-a226-e188eb44984e")
+      request.get("https://api.airvisual.com/v2/city?city=kyiv&state=Kyiv&country=Ukraine&key=37bff4af-0639-4402-a226-e188eb44984e")
         .then(res => {
           resolve(res);
         })
