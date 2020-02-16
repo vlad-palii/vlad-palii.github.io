@@ -34,7 +34,7 @@ export default function Home (){
             <a className="icon-skype" href="skype:paliy.work?chat">paliy.work</a>
           </li>
           <li>
-            <a className="icon-github" target="_blank" href="https://github.com/vladyslav-palii">vladyslav-palii</a>
+            <a className="icon-github" target="_blank" href="https://github.com/vlad-palii">vladyslav-palii</a>
           </li>
           <li>
             <a className="icon-phone" href="tel:+380639822792">+380639822792</a>
