@@ -17,7 +17,7 @@ export default function Home (){
       <h2>
         Overall
       </h2>
-      <p className="short-description">Over the past six years I've worked in several medical companies as a developer
+      <p className="short-description">Over the past eight years I've worked in several medical companies as a developer
         with a different amount of technologies. There is some of them: JavaScript, TypeScript,
         NodeJS, Express.js, MongoDB, MySQL, Vanilla JS, ES5, ES6, JQuery, AngularJS, Angular 2+, PolymerJS, Three JS,
         React JS, Webpack, Gulp, QUnit, Karma, UML, OOP, Design Patterns, Overall product design, Design
@@ -74,6 +74,28 @@ export default function Home (){
   </div>
   <br />
 
+  <div className="row">
+    <div className="col-sm">
+      <div className="short-description">
+        <h5>Team Lead @ Doxy.me (2020-2022):</h5>
+        <small>Telemedicine application — Patient-Clinic communication (Healthcare).</small>
+        <p>
+          Doxy.me is a successful telemedicine company that has had an incredible growth for the past two years. (Healthcare).
+
+          I joined the company as a senior full-stack developer, and was soon promoted to the team leader position, where I've successfully started the implementation of critical improvements, among them:
+          - Software development process implementation and improvement
+          - Initialisation of regression for product stabilization
+          - Migration process planning (angularJS to reactJS)
+          - Running a software development team
+          - implementation (git workflow, SDS)
+          - Delivery process improvement
+          - Product development
+          - Release support
+        </p>
+      </div>
+    </div>
+  </div>
+  <br />
   <div className="row">
     <div className="col-sm">
       <div className="short-description">
