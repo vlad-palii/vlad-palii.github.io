@@ -79,18 +79,18 @@ export default function Home (){
       <div className="short-description">
         <h5>Team Lead @ Doxy.me (2020-2022):</h5>
         <small>Telemedicine application — Patient-Clinic communication (Healthcare).</small>
-        <p style="white-space: pre;">
-          Doxy.me is a successful telemedicine company that has had an incredible growth for the past two years. (Healthcare).
-
-          I joined the company as a senior full-stack developer, and was soon promoted to the team leader position, where I've successfully started the implementation of critical improvements, among them:
-          - Software development process implementation and improvement
-          - Initialisation of regression for product stabilization
-          - Migration process planning (angularJS to reactJS)
-          - Running a software development team
-          - implementation (git workflow, SDS)
-          - Delivery process improvement
-          - Product development
-          - Release support
+        <p>
+          Doxy.me is a successful telemedicine company that has had an incredible growth for the past two years. (Healthcare).<br />
+          <br />
+          I joined the company as a senior full-stack developer, and was soon promoted to the team leader position, where I've successfully started the implementation of critical improvements, among them:<br />
+          - Software development process implementation and improvement<br />
+          - Initialisation of regression for product stabilization<br />
+          - Migration process planning (angularJS to reactJS)<br />
+          - Running a software development team<br />
+          - implementation (git workflow, SDS)<br />
+          - Delivery process improvement<br />
+          - Product development<br />
+          - Release support<br />
         </p>
       </div>
     </div>
