@@ -79,7 +79,7 @@ export default function Home (){
       <div className="short-description">
         <h5>Team Lead @ Doxy.me (2020-2022):</h5>
         <small>Telemedicine application — Patient-Clinic communication (Healthcare).</small>
-        <p>
+        <p style="white-space: pre;">
           Doxy.me is a successful telemedicine company that has had an incredible growth for the past two years. (Healthcare).
 
           I joined the company as a senior full-stack developer, and was soon promoted to the team leader position, where I've successfully started the implementation of critical improvements, among them:
