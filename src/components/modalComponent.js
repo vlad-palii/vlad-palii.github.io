@@ -22,7 +22,12 @@ export default function ModalComponent(props) {
                 ariaHideApp={false}
                 isOpen={modalState}
                 contentLabel="Minimal Modal Example">
-
+                    <div className={props.idProp + ' modal-content'}  >
+                        <img className="modal-image" src={props.imageProp}></img>
+                        <p className="modal-description">
+                            {props.descriptionProp}
+                        </p>
+                    </div>
                 <div className="close-button" onClick={closeModal}>X</div>
             </Modal>
         </div>

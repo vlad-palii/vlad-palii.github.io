@@ -638,6 +638,7 @@ div#app {
 }
 
 $marginSize: 150px;
+
 // $workExamplesMargin: 30px;
 .work-examples {
   position: relative;
@@ -734,14 +735,87 @@ $marginSize: 150px;
   position: relative;
 }
 
+// .ReactModal__Content.ReactModal__Content--after-open {
+//   z-index: 999;
+//   overflow: hidden;
+//   padding: 300px !important;
+//   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+//   border-radius: 20px;
+
+//   .modal-content {
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: nowrap;
+//     align-content: center;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100% !important;
+//     border: none;
+
+//     .modal-image {
+//       width: 250px;
+//       display: inline-flex;
+//     }
+
+//     .modal-description {
+//       padding: 50px;
+//       font-size: 1em;
+      
+//     }
+//   }
+//   .fgModal.modal-content {
+//     .modal-image {
+//       width: 700px;
+//     }
+//   }
+// }
+
 .ReactModal__Content.ReactModal__Content--after-open {
   z-index: 999;
   overflow: hidden;
+  padding: 100px !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 20px;
+
+  .modal-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 100% !important;
+    border: none;
+
+    .modal-image {
+      width: 20%;
+      display: inline-flex;
+    }
+
+    .modal-description {
+      padding: 50px;
+      font-size: 1em;
+      display: inline-flex;
+      height: 100%;
+      overflow: hidden;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+      flex-direction: row;
+    }
+  }
+  .fgModal.modal-content {
+    .modal-image {
+      width: 50%;
+    }
+  }
 }
 
 .ReactModalPortal .close-button {
   position: absolute;
-  right: 30px;
+  top: 30px;
+  right: 50px;
   cursor: pointer;
   font-family: 'Outfit';
   font-weight: 900;
