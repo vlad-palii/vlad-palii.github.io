@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import request from 'superagent'
 import './../App.scss';
 import UserLocationComponent from './userLocationComponent'
 import Clock from 'react-live-clock';
