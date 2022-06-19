@@ -11,7 +11,9 @@ export default function App() {
     <div id="app" >
       {/* className="synthwave-i" bg-header-synthwave*/}
       <Router>
-        <div className="container bg-absolute">
+
+
+        {/* <div className="container bg-absolute">
           <div className="equalHMWrap eqWrap">
             <div className="equalHM eq">boo</div>
             <div className="equalHM eq">shoo</div>
@@ -26,7 +28,9 @@ export default function App() {
             <div className="equalHM eq">clue</div>
             <div className="equalHM eq">clue</div>
           </div>
-        </div>
+        </div> */}
+
+
         {/* <div className='container'>
           <nav className="navbar navbar-expand-lg navbar-light ">
             <a className="navbar-brand" href="#"></a>

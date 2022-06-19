@@ -25,11 +25,40 @@ export default function ProductDesign() {
   };
 
   return (
-    <div>
-      <div className="container">
+    <div className="container">
 
-        <div className='info-circle-wrapper'>
+      {/* <div className="row background-image">
+          <div className="col-sm vertical-col-sm">
+          </div>
+          <div className="col-sm vertical-col-sm">
+            <div className="avatar-2"></div>
+          </div>
+        </div> */}
 
+      <div className="row text-underline ">
+        <div className="col-sm-8 vertical-col-sm">
+          <p className='h1 h1-main-title'>PASSIONATE TO</p>
+        </div>
+        <div className="col-sm vertical-col-sm avatar-2">
+        </div>
+      </div>
+      <div className="row text-underline ">
+        {/* <div className="col-sm vertical-col-sm">
+          
+        </div> */}
+        <div className="col-sm vertical-col-sm">
+          <p className='h1 h1-main-title-2'>SOLVE REAL PROBLEMS</p>
+        </div>
+      </div>
+
+      <p className='h3 work-examples'>Work Examples:</p>
+
+      <div className='row row-w-bg'>
+        <div className="col-sm vertical-col-sm">
+          {/* <div className="yfc-img"></div> */}
+          <img className='img-size' src={yfcImg} />
+        </div>
+        <div className="col-sm vertical-col-sm">
           <ModalComponent
             idProp="yfcModal"
             btnText="Coffee shop Application"
@@ -37,7 +66,14 @@ export default function ProductDesign() {
             descriptionProp={examplesData.yfc.desc}
             classnameProp="info-circle info-circle-yfc">
           </ModalComponent>
+        </div>
+      </div>
 
+      <div className='row'>
+        <div className="col-sm vertical-col-sm">
+          <img className='img-size' src={binImg} />
+        </div>
+        <div className="col-sm vertical-col-sm">
           <ModalComponent
             idProp="binModal"
             btnText="Binance bank Application"
@@ -45,7 +81,14 @@ export default function ProductDesign() {
             descriptionProp={examplesData.bin.desc}
             classnameProp="info-circle info-circle-bin">
           </ModalComponent>
+        </div>
+      </div>
 
+      <div className='row'>
+        <div className="col-sm vertical-col-sm">
+          <img className='img-size' src={fgImg} />
+        </div>
+        <div className="col-sm vertical-col-sm">
           <ModalComponent
             idProp="fgModal"
             btnText="Vertical farming Landing"
@@ -53,34 +96,16 @@ export default function ProductDesign() {
             descriptionProp={examplesData.fg.desc}
             classnameProp="info-circle info-circle-fg">
           </ModalComponent>
-
         </div>
-
-        <div className="row background-image">
-
-          <div className="col-sm vertical-col-sm">
-          </div>
-          <div className="col-sm vertical-col-sm">
-            <div className="avatar-2"></div>
-          </div>
-        </div>
-
-        <div className="row text-underline">
-          <p className='h1 h1-main-title'>PASSIONATE TO</p>
-          <p className='h1 h1-main-title-2'>SOLVE REAL PROBLEMS</p>
-          <p className='work-examples'>Work Examples:</p>
-        </div>
-
-        <div className="row flex-inside">
-          <div className="yfc-img"></div>
-          <div className="bin-img"></div>
-          <div className="fg-img"></div>
-          {/* onClick={} */}
-        </div>
-
       </div>
 
+      {/* <div className='row info-circle-wrapper'>
+        </div> */}
 
+      {/* <div className="row flex-inside">
+          <div className="fg-img"></div>
+          onClick={}
+        </div> */}
 
     </div>
   )
