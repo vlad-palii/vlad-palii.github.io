@@ -21,13 +21,28 @@ export default function ModalComponent(props) {
             <Modal
                 ariaHideApp={false}
                 isOpen={modalState}
-                contentLabel="Minimal Modal Example">
-                    <div className={props.idProp + ' modal-content'}  >
-                        <img className="modal-image" src={props.imageProp}></img>
-                        <p className="modal-description">
-                            {props.descriptionProp}
-                        </p>
+                contentLabel="Minimal Modal Example"
+                className="">
+
+                {/* <div className={props.idProp + ' modal-content'}  > */}
+                
+                <div className='flex-centered full-height'>
+                    <div className={props.idProp + ' container'}  >
+                        <div className="row">
+                            <div className="col flex-centered">
+                                <img className="modal-image" src={props.imageProp}></img>
+                            </div>
+                            <div className="col flex-centered">
+                                <p className="modal-description">
+                                    {props.descriptionProp}
+                                </p>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+
+
                 <div className="close-button" onClick={closeModal}>X</div>
             </Modal>
         </div>

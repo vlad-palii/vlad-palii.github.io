@@ -4,7 +4,8 @@ import './App.scss';
 import Home from './components/homeComponent'
 import AirQuality from './components/airQulityComponent'
 import CodingProblems from './components/codingProblems'
-import ProductDesign from './components/productDesign';
+import Portfolio from './components/portfolio';
+import CV from './components/cv';
 
 export default function App() {
   return (
@@ -31,7 +32,7 @@ export default function App() {
         </div> */}
 
 
-        {/* <div className='container'>
+        <div className='container'>
           <nav className="navbar navbar-expand-lg navbar-light ">
             <a className="navbar-brand" href="#"></a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
@@ -43,9 +44,9 @@ export default function App() {
                   <NavLink exact className="nav-link" activeClassName="active" to="/">CV</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink exact className="nav-link" activeClassName="active" to="/product-design">Product Design CV</NavLink>
+                  <NavLink exact className="nav-link" activeClassName="active" to="/portfolio">Portfolio</NavLink>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
             <NavLink exact className="nav-link" activeClassName="active" to="/air-quality">Air Quality</NavLink>
             </li>
             <li className="nav-item">
@@ -53,14 +54,15 @@ export default function App() {
             </li>
             <li className="nav-item">
             <NavLink exact className="nav-link" activeClassName="active" to="/anguar-chat">Angular 8 Chat</NavLink>
-            </li>
+            </li> */}
               </ul>
             </div>
           </nav>
-        </div> */}
+        </div>
 
-        <Route exact path="/" component={Home} />
-        <Route exact path="/product-design" component={ProductDesign} />
+        {/* <Route exact path="/" component={Home} /> */}
+        <Route exact path="/" component={CV} />
+        <Route exact path="/portfolio" component={Portfolio} />
         <Route exact path="/air-quality" component={AirQuality} />
         <Route exact path="/coding-problems" component={CodingProblems} />
         <Route exact path="/anguar-chat" />
