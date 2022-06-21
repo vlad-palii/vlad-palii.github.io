@@ -938,15 +938,24 @@ div#app {
 }
 
 body {
-  font-family: "Outfit" !important;
+  font-family: "Roboto" !important;
   color: #414141;
   min-width: 300px !important;
 }
 
 .h1 {
+  font-family: "Outfit" !important;
   font-size: calc(1.525rem + 3.3vw) !important;
 }
-
+.h2 {
+  font-family: "Outfit" !important;
+}
+.h3 {
+  font-family: "Outfit" !important;
+}
+.h4 {
+  font-family: "Outfit" !important;
+}
 .h5 {
   // font-size: calc(0.1rem + 2vw) !important;
 }

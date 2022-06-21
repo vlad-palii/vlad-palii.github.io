@@ -27,19 +27,19 @@ export default function CV() {
                 Overall
               </h2>
               <p className="">
-                Over the past eight+ years, I've worked in several healthcare companies as a full-stack developer and combined such positions as team lead, tech lead, and solution lead.
-                <br />
-                <br />
-                In these 8 years, I’ve accumulated a profound understanding of complex product development, and implementation from scratch, including the design process, development process lifecycle, testing, and delivery.  Building and shipping applications and software at the level of whole features/products.
-                <br />
-                <br />
+                Over the past eight+ years, I've worked in several healthcare startups as a full-stack developer and then combined such positions as team lead, tech lead, and solution lead.
+                <br></br>
+                <br></br>
+                In these 8 years, I’ve accumulated a profound understanding of complex product development, and implementation from scratch, including the design process, development process lifecycle, testing, and delivery. Building and shipping applications and software at the level of whole features/products.
+                <br></br>
+                <br></br>
                 I'm a huge advocate of efficiency and effectiveness during product development, and I’m identifying opportunities and making decisions only based on planning and research of company/business needs and its users
-                <br />
-                <br />
-                Working as a software developer I was constantly preoccupied with ensuring that products and features are needed and valuable for users and easy to use.
-                <br />
-                <br />
-                And after making the way from developer to manager, I've understood that my real passion is designing, improving products, and solving problems through researching, interviewing, ideating, crafting, and iterating.
+                <br></br>
+                <br></br>
+                Working as a software developer I was constantly preoccupied with ensuring that products and features are valuable and needed by users, and are easy to use.
+                <br></br>
+                <br></br>
+                As i rose from developer to manager, I understood that my real passion is designing, improving products, and solving problems through researching, interviewing, ideating, crafting, and iterating.
               </p>
             </div>
             <div className="col-sm">
@@ -167,7 +167,7 @@ export default function CV() {
 
         </div>
       </section>
-      <section>
+      <section className='examples-section-2'>
         <div className='container'>
           <div className="row">
 

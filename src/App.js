@@ -35,13 +35,13 @@ export default function App() {
         <div className='container'>
           <nav className="navbar navbar-expand-lg navbar-light ">
             <a className="navbar-brand" href="#"></a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+            {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
+            </button> */}
+            <div className="" id="navbarNav">
               <ul className="navbar-nav ">
                 <li className="nav-item">
-                  <NavLink exact className="nav-link" activeClassName="active" to="/">CV</NavLink>
+                  <NavLink exact className="nav-link" activeClassName="active" to="/">Vlad Palii CV</NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink exact className="nav-link" activeClassName="active" to="/portfolio">Portfolio</NavLink>
