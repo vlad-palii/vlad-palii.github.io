@@ -73,7 +73,7 @@ export default function CV() {
       <section className='examples-section-2'>
         <div className='container'>
           <h2>
-            Expirience
+            Experience
           </h2>
           <div className="row">
             <div className="col-sm">
