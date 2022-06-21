@@ -1075,3 +1075,19 @@ section {
   cursor: pointer;
   padding: 5px;
 }
+
+.scroll-btn {
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  font-size: 3rem;
+  z-index: 4;
+  cursor: pointer;
+  font-weight: 900;
+  color: white;
+  background: grey;
+  border-radius: 100%;
+}

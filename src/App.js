@@ -6,10 +6,12 @@ import AirQuality from './components/airQulityComponent'
 import CodingProblems from './components/codingProblems'
 import Portfolio from './components/portfolio';
 import CV from './components/cv';
+import ScrollButton from './components/scrollButton';
 
 export default function App() {
   return (
     <div id="app" >
+      <ScrollButton></ScrollButton>
       {/* className="synthwave-i" bg-header-synthwave*/}
       <Router>
 
