@@ -71,7 +71,7 @@ export default function CV() {
           <div className="row">
             <div className="col-sm">
               <div className="">
-                <h5>Skills:</h5>
+                <h2>Skills:</h2>
                 <p>
                   <b>VCS: </b>GitHub, GitLab, TFS, BitBucket.<br />
 
