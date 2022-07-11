@@ -45,9 +45,9 @@ export default function App() {
                 <li className="nav-item">
                   <NavLink exact className="nav-link" activeClassName="active" to="/">Vlad Palii CV</NavLink>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <NavLink exact className="nav-link" activeClassName="active" to="/portfolio">Portfolio</NavLink>
-                </li>
+                </li> */}
                 {/* <li className="nav-item">
             <NavLink exact className="nav-link" activeClassName="active" to="/air-quality">Air Quality</NavLink>
             </li>

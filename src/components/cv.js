@@ -3,7 +3,7 @@ import avatar from './../images/avatar2.png';
 
 export default function CV() {
   return (
-    <div>
+    <div className='section-wrapper'>
       <section className='main-section'>
         <div className='container'>
           <div className="row background-image">
@@ -13,7 +13,7 @@ export default function CV() {
               </div>
             </div>
             <div className="col-sm vertical-col-sm">
-              <p className="avatar-description text-underline">My name is Vlad Palii. <br /> Product Designer <br /><br /> Ex. Senior Fullstack developer / Tech Lead.</p>
+              <p className="avatar-description text-underline">My name is Vlad Palii. <br /> Senior Fullstack Engineer / Tech Lead / Tech Manager</p>
             </div>
           </div>
         </div>
@@ -30,16 +30,16 @@ export default function CV() {
                 Over the past eight+ years, I've worked in several healthcare startups as a full-stack developer and then combined such positions as team lead, tech lead, and solution lead.
                 <br></br>
                 <br></br>
-                In these 8 years, I’ve accumulated a profound understanding of complex product development, and implementation from scratch, including the design process, development process lifecycle, testing, and delivery. Building and shipping applications and software at the level of whole features/products.
+                In these 8+ years, I’ve accumulated a profound understanding of complex product development, and implementation from scratch, including the design process, development process lifecycle, testing, and delivery. Building and shipping applications and software at the level of whole features/products.
                 <br></br>
                 <br></br>
-                I'm a huge advocate of efficiency and effectiveness during product development, and I’m identifying opportunities and making decisions only based on planning and research of company/business needs and its users
+                I'm a huge advocate of efficiency and effectiveness during product development, and I’m identifying opportunities and making decisions only based on planning and research of company/business needs and its users.
                 <br></br>
                 <br></br>
                 Working as a software developer I was constantly preoccupied with ensuring that products and features are valuable and needed by users, and are easy to use.
                 <br></br>
                 <br></br>
-                As i rose from developer to manager, I understood that my real passion is designing, improving products, and solving problems through researching, interviewing, ideating, crafting, and iterating.
+                {/* As i rose from developer to manager, I understood that my real passion is designing, improving products, and solving problems through researching, interviewing, ideating, crafting, and iterating. */}
               </p>
             </div>
             <div className="col-sm">
@@ -67,7 +67,37 @@ export default function CV() {
       </section>
 
       <section>
-        <div className='container'></div>
+        <div className='container'>
+          <div className="row">
+            <div className="col-sm">
+              <div className="">
+                <h5>Skills:</h5>
+                <p>
+                  <b>VCS: </b>GitHub, GitLab, TFS, BitBucket.<br />
+
+                  <b>OS (platforms): </b>Windows, Linux, MacOS.<br />
+                  <b>DB: </b> MySQL, PostgreSQL, SQLite, Redis, MongoDB.<br />
+                  <b>Tools: </b>GIT, TFS, JetBrains IDEs, Visual Studio, VSCode.<br />
+                  <b>Infrastructure (CI/CD): </b>Docker, CIrcleCI, AWS, NginX, GitLab<br />
+                  <b>Languages: </b>JavaScript (ES5, ES6), TypeScript, HTML5, CSS3.<br />
+                  <b>Principles: </b>KISS, DRY, SOLID, OOP, REST API, TDD, DDD, Design Patterns.<br />
+                  <b>Methodologies (processes): </b>Agile, Scrum, Kanban, Lean, XP, Overall product design, Design
+                  Documentation, SRS, SDS.<br />
+
+                  <b>Technologies (frameworks/libraries): </b>TCP-IP, Mongoose, SocketIO, AJAX, VanillaJS, jQuery, ReactJS, NextJS,
+                  AngularJS, Angular6+, VueJS, NuxtJS, PolymerJS, ThreeJS, Bootstrap, SemanticUI, MaterialUI, Angular Material, Webpack, Grunt, Gulp, Bower, Yarn, NPM, Karma, qUnit, Chai, Mocha,
+                  SCSS, NodeJS, Express.js, Loopback, Stripe, Twilio, Segment, PubNub.<br />
+                  <br />
+                  <b>Management (+tools): </b>Technical Project Management, Team Management, Sprint planning, Retrospective facilitation, Initial / Technical Interviewing, RACI management, Strategic thinking, Strong communication skills. Basecamp, Atlassian, TFS, Trello, UML, Miro, WBS, Roadmap design.<br />
+                  <br />
+                  <b>Little familiar with: </b>C, C++, Python/Django, C#/.NET, Java/Spring, Ruby/RoR.<br />
+                  <b>Product design (UX/UI): </b>Figma, etc.<br />
+                </p>
+              </div>
+            </div>
+          </div>
+          <br />
+        </div>
       </section>
 
       <section className='examples-section-2'>
@@ -80,6 +110,20 @@ export default function CV() {
               <div className="">
                 <h5> - Team Lead / Tech Lead @ Doxy.me (2020-2022):</h5>
                 <p>Telemedicine application — Patient-Clinic communication (Healthcare).</p>
+                <p>
+                  Doxy.me is a successful telemedicine company that has had an incredible growth for the past two years..<br />
+                  <br />
+                  I joined the company as a senior full-stack developer, and was soon promoted to the team leader position, where I've successfully started the implementation of critical improvements, among them:<br />
+                  - Software development process implementation and improvement<br />
+                  - Initialisation of regression for product stabilization<br />
+                  - Migration process planning (angularJS to reactJS)<br />
+                  - Running a software development team<br />
+                  - Implementation (git workflow, SDS)<br />
+                  - Delivery process improvement<br />
+                  - Product development<br />
+                  - Release support<br />
+                </p>
+                <p>Tech stack: ReactJS, AngularJS, Vue, TypeScript, VanillaJS, Docker, AWS, GitLab, MySQL, PostgreSQL, Express.js, Loopback, Stripe, Twilio, Segment, PubNub.</p>
               </div>
             </div>
           </div>
@@ -89,7 +133,14 @@ export default function CV() {
               <div className="">
                 <h5> - Senior Full-Stack Software Engineer / Solution Lead @ Pavilion Health (2018-2020):</h5>
                 <p>Enterprise application for ICD-10 medical and patients data management (Healthcare).</p>
-
+                <p>
+                  When I started to work here, the current huge medical software ecosystem was in a battered condition.
+                  Completely bad codebase without any comments, without design or requirement documentation, without access to
+                  previous developers. But I've coped with it. A huge part of application was redesigned, and a tons of legacy
+                  code and bugs fixed/refactored. UI interface renewed. Performance improved x2. Added unit testing and linked
+                  with CircleCI environment. Implemented SDLC with SCRUM. Implemented SRS SDS.
+                </p>
+                <p>Tech stack: VanillaJS, jQuery, ReactJS, Angular2+, TypeScript, Docker, CircleCI, MySQL, SQLite, Redis, MongoDB, Express.js, Java (Spring), RoR.</p>
               </div>
             </div>
           </div>
@@ -104,6 +155,7 @@ export default function CV() {
                   Here I've taken part in the development of 3D scenes, REST-API web app parts, and related UX/UI elements and
                   tools.
                 </p>
+                <p>Tech stack: VanillaJS, jQuery, PolymerJS, ThreeJS, C#, C++.</p>
               </div>
             </div>
           </div>
@@ -117,6 +169,7 @@ export default function CV() {
                   Overall design and prototyping of online TV single-page application. Implementing via VanillaJS, AngularJS,
                   jQuery. Unit testing. Company Web-site support. Implementation of internet speed measurement tool.
                 </p>
+                <p>Tech stack: PHP, AngularJS, jQuery, VanillaJS, MySQL.</p>
               </div>
             </div>
           </div>
@@ -124,23 +177,24 @@ export default function CV() {
           <div className="row">
             <div className="col-sm">
               <div className="">
-                <h5> - DTP / WEB Designer (2011-2013):</h5>
-                <p>Photoshop, Illustrator, Corel Draw.</p>
+                <h5> - DTP Designer & WEB-Master @ Freelance (2011-2013):</h5>
+                <p>Tech stack: Photoshop, Illustrator, Corel Draw, PHP, HTML, CSS, WordPress, Joomla, Drupal, Magento</p>
               </div>
             </div>
           </div>
 
-          {/* <div className="row">
+          <div className="row">
             <div className="col-sm">
               <div className="">
-                <h5> - Super Ultra Mega Junior @ Home (2007-2011):</h5>
+                <h5> - Super Ultra Mega Junior @ Home / School (2007-2011):</h5>
                 <p>
-                  Implementing some web stuff on html and css. Creating horrible .bat/cmd scripts. Trying to hack NASA via css
-                  (ha-ha). Setup home based game server for CS1.6/LA2.
+                  Implementing some simple web stuff on html and css in school. Creating weird .bat/cmd scripts. <br />
+                  Trying to hack NASA via HTML (ha-ha). Setup home based game server for CS1.6/LA2.
                 </p>
+                <p>Tech stack: NotePad, JS, HTML, CSS, PHP, Batch script</p>
               </div>
             </div>
-          </div> */}
+          </div>
 
         </div>
       </section>
@@ -157,10 +211,8 @@ export default function CV() {
               </div>
               <br></br>
               <div className="">
-                At my free time as possible, I'm interested in fashion, WEB design, Industrial design, architecture, history, psychology, neuroscience, electronics,
-                mechanical engineering, space engineering, etc. Also a big fan of travel. And now it's more than 14 countries
-                on
-                my count. Half marathon runner — 3 times.
+                At my free time as possible, I'm interested in fashion, web-design, industrial design, architecture, history, psychology, neuroscience, electronics,
+                mechanical engineering, space engineering, etc. Also a big fan of travel. And now it's more than 14 countries on my count. Half marathon runner — 3 times.
               </div>
             </div>
           </div>
