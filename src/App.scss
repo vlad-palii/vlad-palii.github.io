@@ -968,6 +968,7 @@ body {
   max-width: 50%;
   height: auto;
   margin: 5%;
+  border-radius: 50%;
 }
 
 .flex-centered {
@@ -1094,4 +1095,14 @@ section {
   color: white;
   background: grey;
   border-radius: 100%;
+}
+
+.avatar-online-mark {
+  position: relative;
+  top: 80px;
+  right: 70px;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background: green;
 }

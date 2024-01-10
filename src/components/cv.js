@@ -1,5 +1,5 @@
 import React from 'react'
-import avatar from './../images/avatar2.png'
+import avatar from './../images/avatar2024.jpg'
 
 export default function CV() {
   return (
@@ -10,11 +10,12 @@ export default function CV() {
             <div className='col-sm vertical-col-sm'>
               <div className='col-sm flex-centered'>
                 <img className='new-avatar' src={avatar}></img>
+                {/* <div className='avatar-online-mark'></div> */}
               </div>
             </div>
             <div className='col-sm vertical-col-sm'>
               <p className='avatar-description text-underline'>
-                My name is Vlad Palii. <br /> Fullstack Engineer / Team Lead
+                My name is Vlad Palii. <br /> Software Generalist. <br /> Working as Head of Engineering and hands-on Fullstack Engineer.
               </p>
             </div>
           </div>
@@ -27,12 +28,12 @@ export default function CV() {
             <div className='col-sm'>
               <h2>Overall</h2>
               <p className=''>
-                Over the past eight+ years, I've worked in several healthcare
-                startups as a full-stack developer and then combined such
-                positions as team lead, tech lead, and solution lead.
+                Over the past 10 years, I've worked in several healthcare and
+                startups, beggining as a fullstack engineer and paving my way into becoming
+                a team lead, tech lead, solution lead and head of engineering.
                 <br></br>
                 <br></br>
-                In these 8+ years, I’ve accumulated a profound understanding of
+                In these 10 years, I’ve accumulated a profound understanding of
                 complex product development, and implementation from scratch,
                 including the design process, development process lifecycle,
                 testing, and delivery. Building and shipping applications and
@@ -46,7 +47,7 @@ export default function CV() {
                 <br></br>
                 <br></br>
                 Working as a software developer I was constantly preoccupied
-                with ensuring that products and features are valuable and needed
+                with ensuring that products and features are really valuable and needed
                 by users, and are easy to use.
                 <br></br>
                 <br></br>
@@ -88,7 +89,7 @@ export default function CV() {
         </div>
       </section>
 
-      <section>
+      {/* <section>
         <div className='container'>
           <div className='row'>
             <div className='col-sm'>
@@ -103,7 +104,7 @@ export default function CV() {
                   <br />
                   <b>Tools: </b>GIT, TFS, JetBrains IDEs, Visual Studio, VSCode.
                   <br />
-                  <b>Infrastructure (CI/CD): </b>Docker, CIrcleCI, AWS, NginX,
+                  <b>Infrastructure (CI/CD): </b>Docker, CircleCI, AWS, NginX,
                   GitLab
                   <br />
                   <b>Languages: </b>JavaScript (ES5, ES6), TypeScript, HTML5,
@@ -141,7 +142,7 @@ export default function CV() {
           </div>
           <br />
         </div>
-      </section>
+      </section> */}
 
       <section className='examples-section-2'>
         <div className='container'>
@@ -150,24 +151,23 @@ export default function CV() {
           <div className='row'>
             <div className='col-sm'>
               <div className=''>
-                <h5> - Head of Engineering (2022-2024):</h5>
+                <h5> - Head of Engineering @ Only Sports (2022-2024):</h5>
                 <p>
                   A social platform for fans to engage with their favorite collegiate athletes.
                 </p>
                 <p>
-                  Doxy.me is a successful telemedicine company that has had an
-                  incredible growth for the past two years..
+                  <i>(Only Sports is built from an Athlete Perspective by a team of former athletes and sports industry professionals)</i>
                   <br />
                   <br />
-                  I joined the company as a senior full-stack developer / Team Lead, and was
-                  promoted to the Head of Engineering position. 
-                  I inherited a complex and huge decentralized platform which included dozens of undocumented microservices and AWS instances and I've begun important improvements, including:
+                  I joined the company as a senior full-stack developer / team leader, and was
+                  promoted to the Head of Engineering position.
+                  I inherited a large and complex decentralized platform which included dozens of undocumented microservices and AWS instances. There, I implemented important improvements and initiatives, including:
                   <br />
                   - Reverse engineering of the platform.
                   <br />
                   - Infrastructure management.
                   <br />
-                  - Documentation of the platform parts and negotiation with the business side to understand and align the business needs.
+                  - Documentation of the platform parts and negotiation with the business side to understand and align the business's needs.
                   <br />
                   - Leading and managing a remote engineering team based in Pakistan.
                   <br />
@@ -192,12 +192,11 @@ export default function CV() {
               <div className=''>
                 <h5> - Team Lead / Tech Lead @ Doxy.me (2020-2022):</h5>
                 <p>
-                  Telemedicine application — Patient-Clinic communication
-                  (Healthcare).
+                  Telemedicine application — Patient-Clinic communication platform.
                 </p>
                 <p>
-                  Doxy.me is a successful telemedicine company that has had an
-                  incredible growth for the past two years..
+                  <i>(Doxy.me is a successful telemedicine company that has had an
+                  incredible growth during the COVID-19 pandemic. Increased the number of users from 50k to 1M in one year)</i>
                   <br />
                   <br />
                   I joined the company as a senior full-stack developer, and was
@@ -240,8 +239,8 @@ export default function CV() {
                   Pavilion Health (2018-2020):
                 </h5>
                 <p>
-                  Enterprise application for ICD-10 medical and patients data
-                  management (Healthcare).
+                  <i>(Enterprise application for ICD-10 medical and patients data
+                  management)</i>
                 </p>
                 <p>
                   When I started to work here, the current huge medical software
@@ -271,9 +270,8 @@ export default function CV() {
                   - Middle Software Engineer @ Materialise NV (2016-2018):
                 </h5>
                 <p>
-                  Enterprise application for 3d visual planning of surgeon
-                  operations on human's knee and shoulders based on CT/MRI data
-                  (Healthcare).
+                  <i>(Enterprise application for 3d visual planning of surgeon
+                  operations on human's knee and shoulders based on CT/MRI data)</i>
                 </p>
                 <p>
                   Here I've taken part in the development of 3D scenes, REST-API
@@ -293,7 +291,7 @@ export default function CV() {
                   {' '}
                   - Junior Software Engineer @ Lanet Network (2014-2016):
                 </h5>
-                <p>Smart TV & Android TV applications (Telecommunications).</p>
+                <p><i>(Smart TV & Android TV applications)</i></p>
                 <p>
                   Overall design and prototyping of online TV single-page
                   application. Implementing via VanillaJS, AngularJS, jQuery.
@@ -357,6 +355,7 @@ export default function CV() {
           </div>
         </div>
       </section>
+
       <section className='examples-section-2'>
         <div className='container'>
           <div className='row'>
