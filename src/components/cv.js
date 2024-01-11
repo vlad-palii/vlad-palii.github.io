@@ -29,7 +29,7 @@ export default function CV() {
               <h2>Overall</h2>
               <p className=''>
                 Over the past 10 years, I've worked in several healthcare and media startups, 
-                begining as a fullstack engineer and paving my way into becoming 
+                beginning as a fullstack engineer and paving my way into becoming 
                 a team lead, tech lead, solution lead and head of engineering.
                 <br></br>
                 <br></br>
