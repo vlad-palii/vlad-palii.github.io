@@ -15,7 +15,7 @@ export default function CV() {
             </div>
             <div className='col-sm vertical-col-sm'>
               <p className='avatar-description text-underline'>
-                My name is Vlad Palii. <br /> Software Generalist. <br /> Working as Head of Engineering and hands-on Fullstack Engineer.
+                My name is Vlad Palii. <br /> Full-Stack Engineering Generalist
               </p>
             </div>
           </div>
@@ -151,7 +151,7 @@ export default function CV() {
           <div className='row'>
             <div className='col-sm'>
               <div className=''>
-                <h5> - Head of Engineering @ Only Sports (2022-2024):</h5>
+                <h5> - Hands-On Engineering Manager @ Only Sports (2022-2024):</h5>
                 <p>
                   A social platform for fans to engage with their favorite collegiate athletes.
                 </p>
