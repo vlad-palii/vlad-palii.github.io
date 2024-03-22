@@ -179,7 +179,7 @@ export default function CV() {
                   <br />
                 </p>
                 <p>
-                  Tech stack: HapiJS, Express.js, Django, ReactJS, AngularJS, TypeScript, VanillaJS,
+                  Tech stack: HapiJS, Express.js, Django, NextJS, ReactJS, AngularJS, TypeScript, VanillaJS,
                   Golang, Krakend, Docker, AWS, GitLab, MongoDB, Neo4j, Redis, Cassandra, GRPC, VerneMQ, MQTT, 
                   Stripe, Amplitude.
                 </p>
@@ -222,7 +222,7 @@ export default function CV() {
                   <br />
                 </p>
                 <p>
-                  Tech stack: ReactJS, AngularJS, Vue, TypeScript, VanillaJS,
+                  Tech stack: ReactJS, NextJS, AngularJS, Vue, TypeScript, VanillaJS,
                   Docker, AWS, GitLab, MySQL, PostgreSQL, Express.js, Loopback,
                   Stripe, Twilio, Segment, PubNub.
                 </p>
