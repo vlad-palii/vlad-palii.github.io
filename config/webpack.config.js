@@ -477,6 +477,50 @@ module.exports = function(webpackEnv) {
             // Make sure to add the new loader(s) before the "file" loader.
           ],
         },
+        {
+          test: sassModuleRegex,
+          use: [
+            isEnvDevelopment && require.resolve('style-loader'),
+            isEnvProduction && {
+              loader: MiniCssExtractPlugin.loader,
+              options: shouldUseRelativeAssetPaths ? { publicPath: '../../' } : {},
+            },
+            {
+              loader: require.resolve('css-loader'),
+              options: {
+                importLoaders: 2,
+                sourceMap: isEnvProduction && shouldUseSourceMap,
+                modules: true,
+                getLocalIdent: getCSSModuleLocalIdent,
+              },
+            },
+            {
+              loader: require.resolve('postcss-loader'),
+              options: {
+                ident: 'postcss',
+                plugins: () => [
+                  require('postcss-flexbugs-fixes'),
+                  require('postcss-preset-env')({
+                    autoprefixer: {
+                      flexbox: 'no-2009',
+                    },
+                    stage: 3,
+                  }),
+                  postcssNormalize(),
+                ],
+                sourceMap: isEnvProduction && shouldUseSourceMap,
+              },
+            },
+            {
+              loader: require.resolve('sass-loader'),
+              options: {
+                implementation: require('sass'),
+                sourceMap: isEnvProduction && shouldUseSourceMap,
+              },
+            },
+          ].filter(Boolean),
+        },
+
       ],
     },
     plugins: [

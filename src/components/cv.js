@@ -151,6 +151,39 @@ export default function CV() {
           <div className='row'>
             <div className='col-sm'>
               <div className=''>
+                <h5> - Hands-On Engineering Manager @ GTO LAB (2024):</h5>
+                <p>
+                  (Game Theory Optimal) — learning platform.
+                </p>
+                <p>
+                  <i>Advanced Poker Software Solutions.</i>
+                  <br />
+                  <br />
+                  I joined the company as a senior full-stack developer / team leader, and was
+                  promoted to the Head of Engineering position.
+                  I inherited a large and complex decentralized platform which included dozens of undocumented microservices and AWS instances. There, I implemented important improvements and initiatives, including:
+                  <br />
+                  - Hiring, leading and managing a remote engineering team.
+                  <br />
+                  - Establishing and maintaining Software Development Life Cycle (SDLC) processes.
+                  <br />
+                  - Managing MVP handover process.
+                  <br />
+                  - Infrastructure management (GCP).
+                  <br />
+                  - Subcontractors management.
+                  <br />  
+                  - Contributing to the development of new features, bugfix.
+                  <br />
+                </p>
+
+              </div>
+            </div>
+          </div>
+
+          <div className='row'>
+            <div className='col-sm'>
+              <div className=''>
                 <h5> - Hands-On Engineering Manager @ Only Sports (2022-2024):</h5>
                 <p>
                   A social platform for fans to engage with their favorite collegiate athletes.
