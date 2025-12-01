@@ -28,30 +28,31 @@ export default function CV() {
             <div className='col-sm'>
               <h2>Overall</h2>
               <p className=''>
-                Over the past 10 years, I've worked in several healthcare and media startups, 
-                beginning as a fullstack engineer and paving my way into becoming 
-                a team lead, tech lead, solution lead and head of engineering.
-                <br></br>
-                <br></br>
-                In these 10 years, I’ve accumulated a profound understanding of
-                complex product development, and implementation from scratch,
-                including the design process, development process lifecycle,
-                testing, and delivery. Building and shipping applications and
-                software at the level of whole features/products.
-                <br></br>
-                <br></br>
-                I'm a huge advocate of efficiency and effectiveness during
-                product development, and I’m identifying opportunities and
-                making decisions only based on planning and research of
-                company/business needs and its users.
-                <br></br>
-                <br></br>
-                Working as a software developer I was constantly preoccupied
-                with ensuring that products and features are really valuable and needed
-                by users, and are easy to use.
-                <br></br>
-                <br></br>
-                {/* As i rose from developer to manager, I understood that my real passion is designing, improving products, and solving problems through researching, interviewing, ideating, crafting, and iterating. */}
+                Full-stack engineering generalist with 11+ years of experience
+                across healthcare, media, education and hybrid-workplace SaaS.
+                Grew from full-stack engineer to team lead, tech lead, solution
+                lead and Head of Engineering, building and shipping complex
+                products end-to-end for both startups and enterprises.
+                <br />
+                <br />
+                Deep experience in web software development, system redesigns, SDLC setup
+                and delivery of full features and products. I focus on
+                efficiency and clarity—making decisions based on real business
+                needs and user value.
+                <br />
+                <br />
+                Fully adapted to modern engineering and AI-augmented
+                development. I treat AI as leverage, not magic: I’ve shipped
+                LLM-powered features, integrated OpenAI APIs early, and use
+                ChatGPT, Claude, Cursor and GitHub Copilot daily for design,
+                implementation, refactoring and documentation—moving fast
+                without sacrificing quality or long-term maintainability.
+                <br />
+                <br />
+                I thrive in small, ambitious teams where one engineer can take a
+                problem from idea to production and iterate based on real usage.
+                <br />
+                <br />
               </p>
             </div>
             <div className='col-sm'>
@@ -67,16 +68,16 @@ export default function CV() {
                       Vlad Palii
                     </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a className='icon-skype' href='skype:paliy.work?chat'>
                       paliy.work
                     </a>
-                  </li>
-                  <li>
+                  </li> */}
+                  {/* <li>
                     <a className='icon-phone' href='tel:+380639822792'>
                       +380639822792
                     </a>
-                  </li>
+                  </li> */}
                   <li>
                     <a className='icon-mail' href='mailto:paliy.work@gmail.com'>
                       paliy.work@gmail.com
@@ -150,33 +151,35 @@ export default function CV() {
 
           <div className='row'>
             <div className='col-sm'>
-              <div className=''>
-                <h5> - Hands-On Engineering Manager @ GTO LAB (2024):</h5>
+              <div>
+                <h5>- Senior Full-Stack Engineer @ Yoffix (2024–Present):</h5>
                 <p>
-                  (Game Theory Optimal) — learning platform.
+                  <i>
+                    Hybrid workplace management platform — desk, room and
+                    parking bookings for distributed teams.
+                  </i>
+                  <br />
+                  <br />
+                  - Own key parts of the backend and frontend architecture for a
+                  multi-tenant SaaS built on AWS serverless.
+                  <br />
+                  - Design and ship new booking, check-in and ticketing features
+                  end-to-end: from GraphQL schema and Lambda functions to React
+                  UI and integration tests.
+                  <br />
+                  - Refactor legacy Amplify/AppSync stacks, simplify
+                  infrastructure-as-code and improve observability to make the
+                  system easier to understand and extend.
+                  <br />
+                  - Use AI coding tools (ChatGPT, Cursor, Copilot) daily for
+                  code navigation, refactoring, test generation and
+                  documentation, shortening delivery cycles and easing
+                  onboarding for other engineers.
+                  <br />
+                  <br />
+                  Tech stack: TypeScript, Node.js, React, AWS Amplify/AppSync,
+                  Lambda, DynamoDB, S3, CloudFormation, Serverless Framework.
                 </p>
-                <p>
-                  <i>Advanced Poker Software Solutions.</i>
-                  <br />
-                  <br />
-                  I joined the company as a senior full-stack developer / team leader, and was
-                  promoted to the Head of Engineering position.
-                  I inherited a large and complex decentralized platform which included dozens of undocumented microservices and AWS instances. There, I implemented important improvements and initiatives, including:
-                  <br />
-                  - Hiring, leading and managing a remote engineering team.
-                  <br />
-                  - Establishing and maintaining Software Development Life Cycle (SDLC) processes.
-                  <br />
-                  - Managing MVP handover process.
-                  <br />
-                  - Infrastructure management (GCP).
-                  <br />
-                  - Subcontractors management.
-                  <br />  
-                  - Contributing to the development of new features, bugfix.
-                  <br />
-                </p>
-
               </div>
             </div>
           </div>
@@ -184,37 +187,89 @@ export default function CV() {
           <div className='row'>
             <div className='col-sm'>
               <div className=''>
-                <h5> - Hands-On Engineering Manager @ Only Sports (2022-2024):</h5>
+                <h5>
+                  {' '}
+                  - Hands-On Head of Engineering (Short-Term engagement) @ GTO
+                  LAB (6 months contract, 2024):
+                </h5>
+                <p>(Game Theory Optimal) — digital learning platform.</p>
                 <p>
-                  A social platform for fans to engage with their favorite collegiate athletes.
+                  <i>Advanced Poker Learning Platform.</i>
+                  <br />
+                  <br />
+                  Brought in as a short-term, hands-on engineering leader during
+                  a transitional period to stabilize processes and support MVP
+                  delivery. Managed a remote engineering team across Ukraine and
+                  Europe, and successfully handled the following
+                  responsibilities:
+                  <br />
+                  - Hiring, leading and managing a remote engineering team.
+                  <br />
+                  - Establishing and maintaining Software Development Life Cycle
+                  (SDLC) processes.
+                  <br />
+                  - Managing MVP handover process.
+                  <br />
+                  - Infrastructure management (GCP).
+                  <br />
+                  - Subcontractors management.
+                  <br />
+                  - Contributing to the development of new features, bugfix.
+                  <br />
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className='row'>
+            <div className='col-sm'>
+              <div className=''>
+                <h5>
+                  {' '}
+                  - Hands-On Head of Engineering @ Only Sports (2022-2024):
+                </h5>
+                <p>
+                  A social platform for fans to engage with their favorite
+                  collegiate athletes.
                 </p>
                 <p>
-                  <i>(Only Sports is built from an Athlete Perspective by a team of former athletes and sports industry professionals)</i>
+                  <i>
+                    (Only Sports is built from an Athlete Perspective by a team
+                    of former athletes and sports industry professionals)
+                  </i>
                   <br />
                   <br />
-                  I joined the company as a senior full-stack developer / team leader, and was
-                  promoted to the Head of Engineering position.
-                  I inherited a large and complex decentralized platform which included dozens of undocumented microservices and AWS instances. There, I implemented important improvements and initiatives, including:
+                  I joined the company as a senior full-stack developer / team
+                  leader, and was promoted to the Head of Engineering position.
+                  I inherited a large and complex decentralized platform which
+                  included dozens of undocumented microservices and AWS
+                  instances. There, I implemented important improvements and
+                  initiatives, including:
                   <br />
                   - Reverse engineering of the platform.
                   <br />
                   - Infrastructure management.
                   <br />
-                  - Documentation of the platform parts and negotiation with the business side to understand and align the business's needs.
+                  - Documentation of the platform parts and negotiation with the
+                  business side to understand and align the business's needs.
                   <br />
-                  - Leading and managing a remote engineering team based in Pakistan.
+                  - Leading and managing a remote engineering team based in
+                  Pakistan.
                   <br />
-                  - Establishing and maintaining Software Development Life Cycle (SDLC) processes from zero.
+                  - Establishing and maintaining Software Development Life Cycle
+                  (SDLC) processes from zero.
                   <br />
-                  - Delivery support. 
+                  - Delivery support.
                   <br />
-                  - Supporting the software architecture and contributing to the development of new features, including work with OpenAI API.
+                  - Supporting the software architecture and contributing to the
+                  development of new features, including work with OpenAI API.
                   <br />
                 </p>
                 <p>
-                  Tech stack: HapiJS, Express.js, Django, NextJS, ReactJS, AngularJS, TypeScript, VanillaJS,
-                  Golang, Krakend, Docker, AWS, GitLab, MongoDB, Neo4j, Redis, Cassandra, GRPC, VerneMQ, MQTT, 
-                  Stripe, Amplitude.
+                  Tech stack: HapiJS, Express.js, Django, NextJS, ReactJS,
+                  AngularJS, TypeScript, VanillaJS, Golang, Krakend, Docker,
+                  AWS, GitLab, MongoDB, Neo4j, Redis, Cassandra, GRPC, VerneMQ,
+                  MQTT, Stripe, Amplitude.
                 </p>
               </div>
             </div>
@@ -225,11 +280,15 @@ export default function CV() {
               <div className=''>
                 <h5> - Team Lead / Tech Lead @ Doxy.me (2020-2022):</h5>
                 <p>
-                  Telemedicine application — Patient-Clinic communication platform.
+                  Telemedicine application — Patient-Clinic communication
+                  platform.
                 </p>
                 <p>
-                  <i>(Doxy.me is a successful telemedicine company that has had an
-                  incredible growth during the COVID-19 pandemic. Increased the number of users from 50k to 1M in one year)</i>
+                  <i>
+                    (Doxy.me is a successful telemedicine company that has had
+                    an incredible growth during the COVID-19 pandemic. Increased
+                    the number of users from 50k to 1M in one year)
+                  </i>
                   <br />
                   <br />
                   I joined the company as a senior full-stack developer, and was
@@ -255,9 +314,9 @@ export default function CV() {
                   <br />
                 </p>
                 <p>
-                  Tech stack: ReactJS, NextJS, AngularJS, Vue, TypeScript, VanillaJS,
-                  Docker, AWS, GitLab, MySQL, PostgreSQL, Express.js, Loopback,
-                  Stripe, Twilio, Segment, PubNub.
+                  Tech stack: ReactJS, NextJS, AngularJS, Vue, TypeScript,
+                  VanillaJS, Docker, AWS, GitLab, MySQL, PostgreSQL, Express.js,
+                  Loopback, Stripe, Twilio, Segment, PubNub.
                 </p>
               </div>
             </div>
@@ -272,8 +331,10 @@ export default function CV() {
                   Pavilion Health (2018-2020):
                 </h5>
                 <p>
-                  <i>(Enterprise application for ICD-10 medical and patients data
-                  management)</i>
+                  <i>
+                    (Enterprise application for ICD-10 medical and patients data
+                    management)
+                  </i>
                 </p>
                 <p>
                   When I started to work here, the current huge medical software
@@ -303,8 +364,11 @@ export default function CV() {
                   - Middle Software Engineer @ Materialise NV (2016-2018):
                 </h5>
                 <p>
-                  <i>(Enterprise application for 3d visual planning of surgeon
-                  operations on human's knee and shoulders based on CT/MRI data)</i>
+                  <i>
+                    (Enterprise application for 3d visual planning of surgeon
+                    operations on human's knee and shoulders based on CT/MRI
+                    data)
+                  </i>
                 </p>
                 <p>
                   Here I've taken part in the development of 3D scenes, REST-API
@@ -324,7 +388,9 @@ export default function CV() {
                   {' '}
                   - Junior Software Engineer @ Lanet Network (2014-2016):
                 </h5>
-                <p><i>(Smart TV & Android TV applications)</i></p>
+                <p>
+                  <i>(Smart TV & Android TV applications)</i>
+                </p>
                 <p>
                   Overall design and prototyping of online TV single-page
                   application. Implementing via VanillaJS, AngularJS, jQuery.
