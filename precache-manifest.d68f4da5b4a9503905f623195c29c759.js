@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f8854c776589d35fc77a0c54eaf2bcf4",
+    "revision": "4a3de79e187df9ecb9623ee92a566759",
     "url": "/index.html"
   },
   {
-    "revision": "bbb67c73db01a93a6acb",
+    "revision": "2a21b96446e342d1b9b1",
     "url": "/static/css/main.9d16df75.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.138b999c.chunk.js"
   },
   {
-    "revision": "bbb67c73db01a93a6acb",
-    "url": "/static/js/main.928b8f1d.chunk.js"
+    "revision": "2a21b96446e342d1b9b1",
+    "url": "/static/js/main.af01f854.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -42,10 +42,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "0f2e29e8deca9f4d1fa45811e9a26769",
     "url": "/static/media/avatar2.0f2e29e8.png"
-  },
-  {
-    "revision": "70e8bf8b9c2b763be968dcf3d9af4afd",
-    "url": "/static/media/avatar2024.70e8bf8b.jpg"
   },
   {
     "revision": "e465ab6949cee40be5c31736126440c2",
@@ -242,5 +238,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "c1d7272cd416b35ed29c26a5896c3737",
     "url": "/static/media/sick-leaf.c1d7272c.jpg"
+  },
+  {
+    "revision": "89fc2bd4abf37d680309b6d7f7af880d",
+    "url": "/static/media/vp_cv_avatar_1x1_2025.89fc2bd4.jpg"
   }
 ]);

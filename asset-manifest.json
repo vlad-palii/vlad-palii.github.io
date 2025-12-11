@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.9d16df75.chunk.css",
-    "main.js": "/static/js/main.928b8f1d.chunk.js",
-    "main.js.map": "/static/js/main.928b8f1d.chunk.js.map",
+    "main.js": "/static/js/main.af01f854.chunk.js",
+    "main.js.map": "/static/js/main.af01f854.chunk.js.map",
     "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
     "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
     "static/js/2.138b999c.chunk.js": "/static/js/2.138b999c.chunk.js",
     "static/js/2.138b999c.chunk.js.map": "/static/js/2.138b999c.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.223a2d11b2234508134c39c247f6e5bc.js": "/precache-manifest.223a2d11b2234508134c39c247f6e5bc.js",
+    "precache-manifest.d68f4da5b4a9503905f623195c29c759.js": "/precache-manifest.d68f4da5b4a9503905f623195c29c759.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.9d16df75.chunk.css.map": "/static/css/main.9d16df75.chunk.css.map",
     "static/media/BIN.png": "/static/media/BIN.0470a723.png",
@@ -17,6 +17,6 @@
     "static/media/allImg3.png": "/static/media/allImg3.14831b41.png",
     "static/media/App.scss": "/static/media/sick-leaf.c1d7272c.jpg",
     "static/media/avatar2.png": "/static/media/avatar2.0f2e29e8.png",
-    "static/media/avatar2024.jpg": "/static/media/avatar2024.70e8bf8b.jpg"
+    "static/media/vp_cv_avatar_1x1_2025.jpg": "/static/media/vp_cv_avatar_1x1_2025.89fc2bd4.jpg"
   }
 }
