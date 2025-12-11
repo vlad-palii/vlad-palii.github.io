@@ -27,12 +27,14 @@ export default function CV() {
       <section className='cv-profile'>
         <p>
           Senior Full-Stack Engineer and Engineering Lead with 11+ years of
-          experience building web applications. Specialized in React, Node.js,
-          TypeScript, and AWS serverless architectures. Proven track record
-          leading distributed teams (up to 8 engineers), establishing SDLC
-          processes, and delivering end-to-end features for SaaS products. Based
-          in Berlin, open to senior full-stack or engineering lead roles in
-          product-driven companies.
+          experience building web applications. Versatile T-shaped engineer
+          specialized in React, Node.js, TypeScript, and AWS serverless, with
+          broad exposure across the full stack. Proven track record leading
+          distributed teams (up to 8 engineers), establishing SDLC processes,
+          and delivering end-to-end features for SaaS products. Leverage
+          AI-assisted development (Cursor, Copilot, ChatGPT) daily to accelerate
+          delivery. Based in Berlin, open to senior full-stack or engineering
+          lead roles in product-driven companies.
         </p>
       </section>
 
@@ -269,7 +271,8 @@ export default function CV() {
               </div>
               <h4>DTP Designer & Web Developer</h4>
               <p className='cv-job-tech'>
-                PHP, HTML, CSS, WordPress, Joomla, Photoshop, Illustrator, Corel Draw.
+                PHP, HTML, CSS, WordPress, Joomla, Photoshop, Illustrator, Corel
+                Draw.
               </p>
             </div>
           </section>
@@ -312,16 +315,27 @@ export default function CV() {
             <h2 className='cv-sidebar-title'>Skills</h2>
 
             <h3>Core Technologies</h3>
-            <p>JavaScript, TypeScript, React, Node.js, Express.js, GraphQL, REST API, PostgreSQL, MySQL, MongoDB, DynamoDB, AWS (Lambda, AppSync, Amplify, S3, CloudFormation), Docker, LinuxUod</p>
+            <p>
+              JavaScript, TypeScript, React, Node.js, Express.js, GraphQL, REST
+              API, PostgreSQL, MySQL, MongoDB, DynamoDB, AWS (Lambda, AppSync,
+              Amplify, S3, CloudFormation), Docker, LinuxUod
+            </p>
 
             <h3>Also Worked With</h3>
-            <p>Next.js, Angular, Vue.js, Golang, PHP, Java, Python, C#, Three.js, Redis, Neo4j, Cassandra, GCP, CircleCI, GRPC, OpenAI API, Stripe, Twilio</p>
+            <p>
+              Next.js, Angular, Vue.js, Golang, PHP, Java, Python, C#, Three.js,
+              Redis, Neo4j, Cassandra, GCP, CircleCI, GRPC, OpenAI API, Stripe,
+              Twilio
+            </p>
 
             <h3>Tools & Methods</h3>
             <p>Git, GitHub, GitLab, Jira, Confluence, Figma, Miro, Slack</p>
 
             <h3>Leadership & Process</h3>
-            <p>Scrum, Kanban, SDLC, SRS/SDS, Code Review, Hiring, Remote Team Management, Stakeholder Communication</p>
+            <p>
+              Scrum, Kanban, SDLC, SRS/SDS, Code Review, Hiring, Remote Team
+              Management, Stakeholder Communication
+            </p>
           </section>
 
           <section className='cv-sidebar-section'>
