@@ -1,5 +1,5 @@
 import React from 'react'
-import avatar from './../images/avatar2024.jpg'
+import avatar from './../images/vp_cv_avatar_1x1_2025.jpg'
 
 export default function CV() {
   return (
@@ -35,10 +35,10 @@ export default function CV() {
                 products end-to-end for both startups and enterprises.
                 <br />
                 <br />
-                Deep experience in web software development, system redesigns, SDLC setup
-                and delivery of full features and products. I focus on
-                efficiency and clarity—making decisions based on real business
-                needs and user value.
+                Deep experience in web software development, system redesigns,
+                SDLC setup and delivery of full features and products. I focus
+                on efficiency and clarity—making decisions based on real
+                business needs and user value.
                 <br />
                 <br />
                 Fully adapted to modern engineering and AI-augmented
