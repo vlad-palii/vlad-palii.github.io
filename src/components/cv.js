@@ -312,20 +312,16 @@ export default function CV() {
             <h2 className='cv-sidebar-title'>Skills</h2>
 
             <h3>Core Technologies</h3>
-            <p>
-              JavaScript, TypeScript, React, Node.js, GraphQL, REST API,
-              PostgreSQL, DynamoDB, AWS (Lambda, AppSync, Amplify, S3,
-              CloudFormation)
-            </p>
+            <p>JavaScript, TypeScript, React, Node.js, Express.js, GraphQL, REST API, PostgreSQL, MySQL, MongoDB, DynamoDB, AWS (Lambda, AppSync, Amplify, S3, CloudFormation), Docker, LinuxUod</p>
 
             <h3>Also Worked With</h3>
-            <p>
-              Next.js, Angular, Vue.js, Python, Three.js, MongoDB, Redis, GCP,
-              Docker, CircleCI
-            </p>
+            <p>Next.js, Angular, Vue.js, Golang, PHP, Java, Python, C#, Three.js, Redis, Neo4j, Cassandra, GCP, CircleCI, GRPC, OpenAI API, Stripe, Twilio</p>
 
             <h3>Tools & Methods</h3>
-            <p>Git, Jira, Figma, Scrum, Kanban, TDD, CI/CD</p>
+            <p>Git, GitHub, GitLab, Jira, Confluence, Figma, Miro, Slack</p>
+
+            <h3>Leadership & Process</h3>
+            <p>Scrum, Kanban, SDLC, SRS/SDS, Code Review, Hiring, Remote Team Management, Stakeholder Communication</p>
           </section>
 
           <section className='cv-sidebar-section'>
