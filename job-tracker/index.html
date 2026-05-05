@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Tracker 2026 — LLM/RAG Engineering</title>
+<style>
+:root {
+  --bg: #f8f9fb;
+  --bg-card: #ffffff;
+  --bg-row-hover: #f0f4ff;
+  --bg-header: #1a1a2e;
+  --bg-input: #f3f4f6;
+  --text: #1a1a2e;
+  --text-secondary: #6b7280;
+  --text-header: #ffffff;
+  --border: #e5e7eb;
+  --border-focus: #6366f1;
+  --accent: #6366f1;
+  --accent-light: #eef2ff;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --radius: 8px;
+  --transition: 0.2s ease;
+}
+
+[data-theme="dark"] {
+  --bg: #0f1117;
+  --bg-card: #1a1b2e;
+  --bg-row-hover: #252640;
+  --bg-header: #0d0d1a;
+  --bg-input: #252640;
+  --text: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --text-header: #e5e7eb;
+  --border: #2d2d44;
+  --border-focus: #818cf8;
+  --accent: #818cf8;
+  --accent-light: #1e1b4b;
+  --shadow: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* Top Bar */
+.topbar {
+  background: var(--bg-header);
+  color: var(--text-header);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-lg);
+}
+
+.topbar h1 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.topbar h1 span { color: var(--accent); }
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--text-header);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all var(--transition);
+}
+
+.theme-toggle:hover { border-color: var(--accent); }
+
+/* Stats Dashboard */
+.stats-bar {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px;
+  overflow-x: auto;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+
+.stat-card {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  min-width: 100px;
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.stat-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+.stat-card .stat-num { font-size: 22px; font-weight: 700; color: var(--accent); }
+.stat-card .stat-label { font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 24px;
+  flex-wrap: wrap;
+  align-items: center;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+
+.filter-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.filter-search {
+  flex: 1;
+  min-width: 200px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg-input);
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.filter-search:focus { border-color: var(--border-focus); }
+
+/* Action Buttons */
+.actions-bar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 24px;
+  align-items: center;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+
+.action-btn {
+  padding: 7px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.action-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+.action-btn.primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.action-btn.primary:hover { opacity: 0.9; }
+
+.action-btn.danger:hover { border-color: #ef4444; color: #ef4444; }
+
+/* Table Container */
+.table-wrap {
+  overflow-x: auto;
+  padding: 0 24px 24px;
+  margin-top: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  min-width: 1600px;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  border-bottom: 2px solid var(--border);
+  padding: 0;
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+th .th-inner {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  gap: 4px;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+th .th-inner:hover { color: var(--accent); }
+
+th .sort-arrow { font-size: 10px; opacity: 0.4; }
+th .sort-arrow.active { opacity: 1; color: var(--accent); }
+
+th .resize-handle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  cursor: col-resize;
+  background: transparent;
+  transition: background var(--transition);
+}
+
+th .resize-handle:hover, th .resize-handle.dragging {
+  background: var(--accent);
+}
+
+th { position: relative; }
+
+tbody tr {
+  transition: background var(--transition);
+  cursor: pointer;
+}
+
+tbody tr:hover { background: var(--bg-row-hover); }
+tbody tr.selected { background: var(--accent-light); }
+
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  vertical-align: top;
+  max-width: 250px;
+}
+
+td[contenteditable="true"] {
+  outline: none;
+  transition: box-shadow var(--transition);
+}
+
+td[contenteditable="true"]:focus {
+  box-shadow: inset 0 0 0 2px var(--border-focus);
+  border-radius: 3px;
+}
+
+/* Priority pills */
+.priority-high { color: #dc2626; font-weight: 700; }
+.priority-medium { color: #f59e0b; font-weight: 600; }
+.priority-low { color: #6b7280; }
+
+/* Stage pills */
+.stage-pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.stage-new { background: #dbeafe; color: #1d4ed8; }
+.stage-applied { background: #e0e7ff; color: #4338ca; }
+.stage-phone { background: #fef3c7; color: #92400e; }
+.stage-technical { background: #fce7f3; color: #9d174d; }
+.stage-final { background: #ede9fe; color: #6d28d9; }
+.stage-offer { background: #d1fae5; color: #065f46; }
+.stage-rejected { background: #fee2e2; color: #991b1b; }
+.stage-withdrawn { background: #f3f4f6; color: #6b7280; }
+
+[data-theme="dark"] .stage-new { background: #1e3a5f; color: #93c5fd; }
+[data-theme="dark"] .stage-applied { background: #312e81; color: #a5b4fc; }
+[data-theme="dark"] .stage-phone { background: #451a03; color: #fcd34d; }
+[data-theme="dark"] .stage-technical { background: #4a0d29; color: #f9a8d4; }
+[data-theme="dark"] .stage-final { background: #2e1065; color: #c4b5fd; }
+[data-theme="dark"] .stage-offer { background: #064e3b; color: #6ee7b7; }
+[data-theme="dark"] .stage-rejected { background: #450a0a; color: #fca5a5; }
+[data-theme="dark"] .stage-withdrawn { background: #1f2937; color: #9ca3af; }
+
+/* Links in table */
+td a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+td a:hover { text-decoration: underline; }
+
+/* Stage select */
+.stage-select {
+  border: none;
+  background: transparent;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 12px;
+  color: inherit;
+  outline: none;
+}
+
+/* Row checkbox */
+.row-check { width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent); }
+
+/* CV Match Panel */
+.panel-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.panel-overlay.open { opacity: 1; visibility: visible; }
+
+.cv-panel {
+  position: fixed;
+  top: 0;
+  right: -520px;
+  bottom: 0;
+  width: 500px;
+  max-width: 90vw;
+  background: var(--bg-card);
+  z-index: 201;
+  box-shadow: var(--shadow-lg);
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.cv-panel.open { right: 0; }
+
+.panel-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.panel-header h2 { font-size: 16px; font-weight: 700; }
+
+.panel-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all var(--transition);
+}
+
+.panel-close:hover { background: var(--bg); color: var(--text); }
+
+.panel-body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.panel-section { margin-bottom: 24px; }
+
+.panel-section h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-section ul { list-style: none; }
+
+.panel-section li {
+  padding: 6px 0;
+  font-size: 13px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.panel-section li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+.match-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  margin: 2px;
+}
+
+.match-tag.hit { background: #d1fae5; color: #065f46; }
+.match-tag.gap { background: #fee2e2; color: #991b1b; }
+
+[data-theme="dark"] .match-tag.hit { background: #064e3b; color: #6ee7b7; }
+[data-theme="dark"] .match-tag.gap { background: #450a0a; color: #fca5a5; }
+
+.bullet-suggestion {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  border-left: 3px solid var(--accent);
+}
+
+/* Add Row Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 300;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 24px;
+  width: 500px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal h2 { margin-bottom: 16px; font-size: 18px; }
+
+.modal label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  margin-top: 12px;
+}
+
+.modal input, .modal select, .modal textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-input);
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.modal input:focus, .modal select:focus, .modal textarea:focus {
+  border-color: var(--border-focus);
+}
+
+.modal textarea { resize: vertical; min-height: 60px; }
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 10px 20px;
+  background: var(--bg-header);
+  color: var(--text-header);
+  border-radius: var(--radius);
+  font-size: 13px;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .topbar { padding: 12px 16px; }
+  .stats-bar, .filter-bar, .actions-bar { padding: 10px 16px; }
+  .table-wrap { padding: 0 16px 16px; }
+  .cv-panel { width: 100%; max-width: 100%; }
+}
+
+@media print {
+  .topbar, .filter-bar, .actions-bar, .cv-panel, .panel-overlay, .toast { display: none !important; }
+  table { min-width: auto; font-size: 10px; }
+  td, th .th-inner { padding: 4px 6px; }
+  .stats-bar { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+/* Date inputs in table */
+td input[type="date"] {
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 12px;
+  padding: 2px 4px;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+}
+
+td input[type="date"]:focus {
+  background: var(--bg-input);
+  border-radius: 4px;
+}
+
+td input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+/* Materials cell */
+.materials-cell { padding: 4px 6px !important; white-space: nowrap; }
+.mat-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 8px; margin: 2px 2px 2px 0;
+  border: 1px solid var(--border); border-radius: 12px;
+  background: var(--bg); color: var(--text-secondary);
+  font-size: 11px; font-weight: 600; cursor: pointer;
+  transition: all var(--transition);
+}
+.mat-btn:hover { border-color: var(--accent); color: var(--accent); }
+.mat-btn.mat-draft { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
+.mat-btn.mat-final { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+[data-theme="dark"] .mat-btn.mat-draft { background: #422006; color: #fcd34d; border-color: #92400e; }
+[data-theme="dark"] .mat-btn.mat-final { background: #064e3b; color: #6ee7b7; border-color: #047857; }
+
+/* Materials section in detail panel */
+.mat-detail-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+}
+.mat-detail-row:last-child { border-bottom: none; }
+.mat-detail-label { width: 60px; font-size: 12px; font-weight: 600; color: var(--text-secondary); }
+.mat-detail-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.mat-action-btn {
+  padding: 5px 10px; font-size: 12px; border-radius: 6px;
+  border: 1px solid var(--border); background: var(--bg); color: var(--text);
+  cursor: pointer; transition: all var(--transition);
+}
+.mat-action-btn:hover { border-color: var(--accent); color: var(--accent); }
+.mat-action-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.mat-status-select {
+  padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border);
+  background: var(--bg-input); color: var(--text); font-size: 12px;
+}
+
+/* File input hidden */
+.file-input-hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1><span>JOB</span> Tracker 2026 &mdash; LLM / RAG Engineering</h1>
+  <div class="topbar-right">
+    <span style="font-size:12px;opacity:0.7;">Vlad Palii &middot; LLM Integration &middot; USA & Berlin</span>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">&#9681;</button>
+  </div>
+</div>
+
+<div class="stats-bar" id="statsBar"></div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all" onclick="setFilter('all', this)">All</button>
+  <button class="filter-btn" data-filter="usa" onclick="setFilter('usa', this)">USA</button>
+  <button class="filter-btn" data-filter="berlin" onclick="setFilter('berlin', this)">Berlin</button>
+  <button class="filter-btn" data-filter="remote" onclick="setFilter('remote', this)">Remote</button>
+  <button class="filter-btn" data-filter="legaltech" onclick="setFilter('legaltech', this)">LegalTech</button>
+  <button class="filter-btn" data-filter="high" onclick="setFilter('high', this)">High Priority</button>
+  <button class="filter-btn" data-filter="needs-cv" onclick="setFilter('needs-cv', this)" title="Active stage + no CV yet">Needs CV</button>
+  <button class="filter-btn" data-filter="needs-cover" onclick="setFilter('needs-cover', this)" title="Active stage + no cover letter yet">Needs Cover</button>
+  <button class="filter-btn" data-filter="cv-final" onclick="setFilter('cv-final', this)">CV Final</button>
+  <input type="text" class="filter-search" placeholder="Search across all columns..." id="globalSearch" oninput="renderTable()">
+</div>
+
+<div class="actions-bar">
+  <button class="action-btn primary" onclick="openAddModal()">+ Add Job</button>
+  <button class="action-btn" onclick="exportCSV()">Export CSV</button>
+  <button class="action-btn" onclick="document.getElementById('importFile').click()">Import CSV</button>
+  <input type="file" id="importFile" class="file-input-hidden" accept=".csv" onchange="importCSV(event)">
+  <button class="action-btn danger" onclick="deleteSelected()">Delete Selected</button>
+  <button class="action-btn" onclick="refreshFromDisk()" title="Run `npm run sync` first to refresh jobs-status.json">⟳ Refresh from disk</button>
+  <div style="flex:1;"></div>
+  <span style="font-size:12px;color:var(--text-secondary);" id="saveStatus">Auto-saved</span>
+</div>
+
+<div class="table-wrap">
+  <table id="jobTable">
+    <thead id="tableHead"></thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+</div>
+
+<!-- CV Match Panel -->
+<div class="panel-overlay" id="panelOverlay" onclick="closePanel()"></div>
+<div class="cv-panel" id="cvPanel">
+  <div class="panel-header">
+    <h2 id="panelTitle">CV Match Analysis</h2>
+    <button class="panel-close" onclick="closePanel()">&times;</button>
+  </div>
+  <div class="panel-body" id="panelBody"></div>
+</div>
+
+<!-- Add Row Modal -->
+<div class="modal-overlay" id="addModal">
+  <div class="modal">
+    <h2>Add New Job</h2>
+    <label>Company *</label>
+    <input type="text" id="addCompany">
+    <label>Role *</label>
+    <input type="text" id="addRole">
+    <label>Location</label>
+    <input type="text" id="addLocation">
+    <label>Salary Range</label>
+    <input type="text" id="addSalary">
+    <label>Source</label>
+    <input type="text" id="addSource" value="LinkedIn">
+    <label>Source URL</label>
+    <input type="url" id="addUrl">
+    <label>Priority</label>
+    <select id="addPriority">
+      <option value="High">High</option>
+      <option value="Medium" selected>Medium</option>
+      <option value="Low">Low</option>
+    </select>
+    <label>Skills Required</label>
+    <textarea id="addSkills"></textarea>
+    <label>Notes</label>
+    <textarea id="addNotes"></textarea>
+    <div class="modal-actions">
+      <button class="action-btn" onclick="closeAddModal()">Cancel</button>
+      <button class="action-btn primary" onclick="addJob()">Add Job</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+
+const CV_DATA = {
+  name: "Vlad Palii",
+  title: "Senior Full-Stack Engineer & Engineering Lead",
+  years: 11,
+  currentRole: "LLM Integration Engineer at Allometric (AirJustice) — Azure LLM integration for legal document analysis",
+  coreSkills: ["JavaScript","TypeScript","React","Node.js","Express.js","GraphQL","REST APIs","PostgreSQL","MySQL","MongoDB","DynamoDB","AWS Lambda","AWS AppSync","Docker","Python","OpenAI API"],
+  aiSkills: ["Azure OpenAI","LLM Integration","RAG Pipelines","Document Processing","Prompt Engineering","Legal AI","NLP"],
+  leadershipSkills: ["Team Lead (8 engineers)","Head of Engineering","SDLC","Scrum","Kanban","Remote Team Management","Code Review"],
+  domainExperience: ["LegalTech (AirJustice)","Telemedicine (Doxy.me)","MedTech (Pavilion Health, Materialise NV)","SaaS (Yoffix)","EdTech/Gaming (GTO LAB)"],
+  additionalTech: ["Next.js","Angular","Vue.js","Golang","PHP","Java","C#","Three.js","Redis","Neo4j","GCP","GRPC","Stripe","Twilio"],
+  education: "M.Sc. Computer Science — Kyiv National University",
+  experience: [
+    { company: "Allometric (AirJustice)", role: "LLM Integration Engineer", period: "2024–Present", bullets: ["Integrating Azure LLMs for prosecution document analysis","Building RAG pipelines for legal knowledge retrieval","Developing AI-powered tools for attorneys"] },
+    { company: "Yoffix", role: "Senior Full-Stack Engineer", period: "2024", bullets: ["Backend/frontend for multi-tenant SaaS","GraphQL + Lambda architecture"] },
+    { company: "GTO LAB", role: "Head of Engineering", period: "2024", bullets: ["Led 5-engineer team","Established SDLC processes"] },
+    { company: "Only Sports", role: "Head of Engineering", period: "2022-2024", bullets: ["Led 6-engineer distributed team","Improved velocity 40%"] },
+    { company: "Doxy.me", role: "Team Lead / Tech Lead", period: "2020-2022", bullets: ["Scaled 50K to 1M users","Led 8-engineer team","Reduced production bugs 50%"] },
+    { company: "Pavilion Health", role: "Senior Full-Stack / Solution Lead", period: "2018-2020", bullets: ["Medical data management","Performance improved 2x","CI/CD implementation"] },
+    { company: "Materialise NV", role: "Software Engineer", period: "2016-2018", bullets: ["3D surgical planning software","Visualization + REST APIs"] }
+  ]
+};
+
+const COLUMNS = [
+  { key: "selected", label: "", width: 40, type: "checkbox" },
+  { key: "priority", label: "Priority", width: 80, type: "priority" },
+  { key: "company", label: "Company", width: 140, type: "text" },
+  { key: "role", label: "Role", width: 200, type: "text" },
+  { key: "location", label: "Location", width: 130, type: "text" },
+  { key: "salary", label: "Salary", width: 130, type: "text" },
+  { key: "source", label: "Source", width: 100, type: "text" },
+  { key: "url", label: "Link", width: 60, type: "link" },
+  { key: "contact", label: "Contact", width: 120, type: "text" },
+  { key: "contactEmail", label: "Email", width: 140, type: "text" },
+  { key: "skillsMatch", label: "Skills Match", width: 200, type: "text" },
+  { key: "cvNotes", label: "CV Notes", width: 180, type: "text" },
+  { key: "coverNotes", label: "Cover Letter", width: 160, type: "text" },
+  { key: "materials", label: "Materials", width: 170, type: "materials" },
+  { key: "stage", label: "Stage", width: 110, type: "stage" },
+  { key: "appliedDate", label: "Applied", width: 100, type: "date" },
+  { key: "followUp", label: "Follow-up", width: 100, type: "date" },
+  { key: "interviewNotes", label: "Interview Notes", width: 180, type: "text" },
+  { key: "notes", label: "Notes", width: 160, type: "text" }
+];
+
+const STAGES = ["New","Applied","Phone Screen","Technical","Final","Offer","Rejected","Withdrawn"];
+const STAGE_CLASSES = {"New":"stage-new","Applied":"stage-applied","Phone Screen":"stage-phone","Technical":"stage-technical","Final":"stage-final","Offer":"stage-offer","Rejected":"stage-rejected","Withdrawn":"stage-withdrawn"};
+const MAT_STATUSES = ["None","Draft","Final"];
+const MAT_ICON = { None: "○", Draft: "◐", Final: "●" };
+const EXTRA_CSV_KEYS = [
+  { key: "cvStatus", label: "CV Status" },
+  { key: "coverStatus", label: "Cover Status" }
+];
+
+const SEED_DATA = [
+  {id:1, priority:"High", company:"GAIA Law", role:"Senior Product Engineer", location:"Berlin", salary:"Competitive + Equity", source:"BerlinStartupJobs", url:"https://berlinstartupjobs.com/engineering/senior-product-engineer-gaia-law/", contact:"", contactEmail:"join@gaia.law", skillsMatch:"Python, LLM, Vue 3/React, LegalTech, Prompt Engineering", cvNotes:"Emphasize AirJustice legal AI work, Azure LLM integration, RAG for legal docs, prosecution document analysis. Highlight React (similar to Vue 3). Mention team leadership.", coverNotes:"Direct parallel: AirJustice = legal AI with LLMs. Passion for legal tech innovation. Full-stack + AI combination.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"TOP PRIORITY. Directly mirrors AirJustice work. Apply to join@gaia.law. LegalTech AI startup in Berlin."},
+  {id:2, priority:"High", company:"Harvey AI", role:"Engineering Manager, AI Quality", location:"San Francisco / New York", salary:"$200K-350K est.", source:"Ashby", url:"https://jobs.ashbyhq.com/harvey", contact:"", contactEmail:"", skillsMatch:"LegalTech, AI/LLM, Team Leadership, Quality Engineering", cvNotes:"Lead with Doxy.me team lead (8 engineers) + AirJustice LLM work. Show legal domain + engineering management combo.", coverNotes:"Legal AI is my domain. Led 8-engineer team at Doxy.me, now building legal AI at AirJustice. Perfect intersection.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"Major LegalTech AI company. 100+ open roles. Also has Legal Engineer roles in SF/NY/London/Germany."},
+  {id:3, priority:"High", company:"Signant Health", role:"AI Platform Engineer - LLM Agents & RAG", location:"Remote, USA", salary:"$160K-210K est.", source:"Indeed/Remotive", url:"https://remotive.com/remote/jobs/ai-ml/ai-platform-engineer-llm-agents-rag-3755764", contact:"", contactEmail:"", skillsMatch:"Python, RAG, Vector DBs, LLM Agents, Prompt Engineering, Evaluation Frameworks", cvNotes:"Highlight AirJustice RAG pipeline work, Azure OpenAI integration. Show production LLM deployment experience.", coverNotes:"Building RAG systems for legal docs at AirJustice. Deep experience with production LLM apps and compliance-aware AI.", stage:"Withdrawn", appliedDate:"", followUp:"", interviewNotes:"", notes:"[EXPIRED Apr 2026 — re-verified May 2026, still HTTP 410] Healthcare AI. Remote USA. 5+ years SE + 2+ years LLM required. Company has no current replacement listing."},
+  {id:4, priority:"High", company:"BrightAI Corporation", role:"Senior AI Engineer - LLM, RAG", location:"Palo Alto, CA", salary:"Not specified", source:"Greenhouse", url:"https://job-boards.greenhouse.io/brightai/jobs/5616545004", contact:"", contactEmail:"", skillsMatch:"LangChain, PyTorch, FAISS, Weaviate, Pinecone, RAG, Prompt Engineering, Python", cvNotes:"Focus on RAG pipeline experience, document processing for legal domain. Mention Python + ML frameworks.", coverNotes:"Building production RAG systems at AirJustice. Experience with LLM integration, document indexing, retrieval systems.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"Industrial AI focus. Requires MS/PhD preferred. 5+ years ML/AI with NLP focus."},
+  {id:5, priority:"Medium", company:"Elsevier", role:"Senior Software Engineer - RAG", location:"Philadelphia, PA", salary:"$95K-$159K", source:"Indeed", url:"https://www.indeed.com/q-%22retrieval-augmented-generation%22-jobs.html", contact:"", contactEmail:"", skillsMatch:"Python, RAG Pipelines, MLOps, Cloud (AWS/GCP/Azure), Docker, K8s, CI/CD", cvNotes:"Highlight RAG pipeline experience, cloud infrastructure (AWS), Docker, CI/CD implementation at Pavilion Health.", coverNotes:"Production RAG systems at AirJustice + deep AWS/infrastructure experience from multiple roles.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"Scientific publishing. 5+ years SE required. LangGraph experience a plus."},
+  {id:6, priority:"Medium", company:"GigaBrands", role:"AI Full Stack Engineer", location:"USA", salary:"Not specified", source:"Arc.dev", url:"https://arc.dev/remote-jobs/llm", contact:"", contactEmail:"", skillsMatch:"TypeScript, Node.js, React, PostgreSQL, LLM", cvNotes:"Perfect stack match! Emphasize TypeScript/React/Node.js + LLM integration. Full-stack AI = exactly what I do.", coverNotes:"Full-stack engineer adding LLM capabilities. 11+ years TypeScript/React/Node + current LLM integration work.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"Strong full-stack + LLM combo. Good stack match."},
+  {id:7, priority:"Medium", company:"Arc Exclusive", role:"AI Platform Engineer (Freelance)", location:"Worldwide", salary:"$40-80/hr", source:"Arc.dev", url:"https://arc.dev/remote-jobs/llm", contact:"", contactEmail:"", skillsMatch:"Python, TypeScript, Agentic Frameworks, MCP", cvNotes:"Highlight both Python and TypeScript expertise. Show agentic AI experience from AirJustice.", coverNotes:"Building agentic AI systems at AirJustice. Strong Python + TypeScript. Available for freelance.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"Freelance, worldwide. Senior level. Full-time freelance."},
+  {id:8, priority:"Medium", company:"Arc Exclusive", role:"Fractional CTO (Health AI Startup)", location:"Worldwide (London hrs)", salary:"$60-75/hr", source:"Arc.dev", url:"https://arc.dev/remote-jobs/llm", contact:"", contactEmail:"", skillsMatch:"LLM, Node.js, React, Supabase, Vercel", cvNotes:"Lead with Head of Engineering experience (GTO LAB, Only Sports). Show health domain (Doxy.me, Pavilion Health) + LLM.", coverNotes:"Head of Engineering 2x + health domain (Doxy.me telemedicine) + current LLM work. Perfect CTO profile.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"Part-time fractional CTO. Health AI. Good leadership match."},
+  {id:9, priority:"Medium", company:"Briink (Merantix)", role:"AI/LLM Engineer", location:"Berlin", salary:"Not specified", source:"BerlinStartupJobs", url:"https://join.com/companies/briink/13934368-ai-llm-engineer", contact:"", contactEmail:"", skillsMatch:"LLM Systems, Python, GCP, CI/CD, Docker, ESG/Sustainability", cvNotes:"Show LLM system building experience, production deployment, evaluation. CI/CD from Pavilion Health.", coverNotes:"Building LLM systems end-to-end at AirJustice. Strong production deployment + evaluation experience.", stage:"Withdrawn", appliedDate:"", followUp:"", interviewNotes:"", notes:"[EXPIRED ~Nov 2025 — re-verified May 2026, still archived ~5 mo ago] Berlin AI Campus (Merantix). ESG/Climate tech. briink.com/careers shows no open positions; only intern role on briink.jobs.personio.com. Requires video intro in application."},
+  {id:10, priority:"Medium", company:"MaibornWolff", role:"Senior AI Engineer - Agentic AI, LLM", location:"Berlin", salary:"Not specified", source:"Indeed DE", url:"https://de.indeed.com/q-ai-llm-l-berlin-jobs.html", contact:"", contactEmail:"", skillsMatch:"Python, FastAPI, LangChain, DeepEval, Docker, Cloud", cvNotes:"Highlight Python + Docker + cloud experience. Show LLM integration and agentic AI from AirJustice.", coverNotes:"Current LLM integration + strong software engineering background. Fluent English, improving German.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"German consultancy. Requires fluent German + English. Check German level requirement."},
+  {id:11, priority:"Medium", company:"Binance", role:"LLM Applied Data Scientist (RAG/NLP)", location:"Remote", salary:"Not specified", source:"Lever", url:"https://jobs.lever.co/binance/834478e8-854c-40d0-8093-7bc0a5e080d5", contact:"", contactEmail:"", skillsMatch:"RAG, NLP, LLM, Python, Research", cvNotes:"Focus on NLP and RAG pipeline work. Document processing experience from AirJustice.", coverNotes:"Applied RAG/NLP for legal document analysis. Research-oriented approach to LLM improvement.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"Crypto/Web3. Major company. Research + applied science focus."},
+  {id:12, priority:"Low", company:"Fullscript", role:"Staff Machine Learning Engineer", location:"Remote", salary:"Not specified", source:"Lever", url:"https://jobs.lever.co/fullscript/21ff4b32-a9c6-4e29-a3a2-1c9d2d65bba4", contact:"", contactEmail:"", skillsMatch:"ML Engineering, AI, Health Domain", cvNotes:"Health domain experience (Doxy.me, Pavilion Health). ML integration skills from AirJustice.", coverNotes:"Health domain background (telemedicine, medical data) + current AI/LLM engineering work.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"Health-focused AI. Staff level."},
+  {id:13, priority:"Low", company:"BenchSci", role:"Engineering Manager - Knowledge Enrichment", location:"Remote", salary:"Not specified", source:"Lever", url:"https://jobs.lever.co/benchsci/62c6322c-3114-44c9-a9d5-745a42ac223c", contact:"", contactEmail:"", skillsMatch:"ML Engineering, Team Leadership, Knowledge Systems", cvNotes:"Team lead experience (8 engineers) + ML/AI skills. Knowledge systems parallel to RAG work.", coverNotes:"Engineering leadership + ML transition. Led teams building knowledge-intensive systems.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"ML engineering management. Transitioning ML engineers to leadership."},
+  {id:14, priority:"Low", company:"HeyJobs", role:"Freelance AI Engineer - PoC", location:"Berlin", salary:"Not specified", source:"BerlinStartupJobs", url:"https://berlinstartupjobs.com/skill-areas/llm/", contact:"", contactEmail:"", skillsMatch:"AI Engineering, LLM, PoC Development, Prototyping", cvNotes:"Show rapid prototyping ability. AirJustice LLM integration + full-stack speed.", coverNotes:"Fast prototype builder. LLM integration experience. Full-stack engineer who ships quickly.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"Freelance/contract. PoC focused. Berlin."},
+  {id:15, priority:"Low", company:"HelloBetter", role:"ML/AI Engineer - NLP", location:"Berlin/Hamburg (Remote)", salary:"Not specified", source:"StartupSucht", url:"https://startupsucht.com/startup-job/startup-job-hellobetter-berlin-remote-ml-ai-engineer-nlp-expert-custom-llm-development", contact:"", contactEmail:"", skillsMatch:"NLP, RAG, LLM, Python, Mental Health Domain", cvNotes:"NLP and RAG experience from AirJustice. Health domain from Doxy.me/Pavilion.", coverNotes:"RAG + NLP at AirJustice. Health domain background. Passionate about health tech.", stage:"Withdrawn", appliedDate:"", followUp:"", interviewNotes:"", notes:"[EXPIRED Jan 2025 — re-verified May 2026, still expired] Digital therapeutics for mental health. HelloBetter careers page (geton.jobs.personio.de) shows no current ML/AI/Engineering roles, only sales. Remote-first."},
+  {id:16, priority:"Medium", company:"Arc Exclusive", role:"Senior Software Engineer (Agentic AI)", location:"Eastern EU (Copenhagen TZ)", salary:"$40-60/hr", source:"Arc.dev", url:"https://arc.dev/remote-jobs/llm", contact:"", contactEmail:"", skillsMatch:"Python, SQL, LLM, Data, Agentic AI", cvNotes:"Python + SQL + LLM from AirJustice. Agentic AI experience. Based in Berlin = good timezone match.", coverNotes:"Building agentic AI for legal docs. Strong Python/SQL. Berlin-based = Copenhagen timezone.", stage:"Withdrawn", appliedDate:"", followUp:"", interviewNotes:"", notes:"[EXPIRED — re-verified May 2026] Listing no longer on Arc.dev. Freelance full-time. Eastern EU timezone works from Berlin."},
+  {id:17, priority:"Medium", company:"EY", role:"AI Engineer - LLMs, Agents & RAG", location:"France (check for DE/US)", salary:"Not specified", source:"EY Careers", url:"https://careers.ey.com/ey/job/AI-Engineer-LLMs,-Agents-&-RAG-HF/1267376001/", contact:"", contactEmail:"", skillsMatch:"LLM, Agents, RAG, Consulting", cvNotes:"Enterprise consulting + AI. Show both technical depth and client-facing experience.", coverNotes:"LLM integration at AirJustice + consulting-friendly communication skills. 11+ years enterprise experience.", stage:"Withdrawn", appliedDate:"", followUp:"", interviewNotes:"", notes:"[EXPIRED — re-verified May 2026] 'Job is no longer available'. EY's newer 'Agentic AI Developer' listing (1182296901) is also closed. Check careers.ey.com periodically for fresh AI roles in DE/US."},
+  {id:18, priority:"Low", company:"SpanIdea Systems", role:"AI/ML Architect", location:"Remote", salary:"$125-145/hr", source:"Indeed", url:"https://www.indeed.com/q-ai-llm-engineer-jobs.html", contact:"", contactEmail:"", skillsMatch:"ML/AI, LLM Agents, Agentic AI, Python, MLOps", cvNotes:"20+ years required - doesn't match. Skip or apply showing 11+ years depth.", coverNotes:"", stage:"Withdrawn", appliedDate:"", followUp:"", interviewNotes:"", notes:"[EXPIRED — re-verified May 2026] URL still pointing to a different company's listing. Requires 20+ years (too senior). $125-145/hr contract."},
+  {id:19, priority:"Medium", company:"Picsart", role:"Senior ML Scientist, GenAI", location:"Berlin", salary:"Not specified", source:"BerlinStartupJobs", url:"https://berlinstartupjobs.com/skill-areas/ai/", contact:"", contactEmail:"", skillsMatch:"PyTorch, ML, Generative AI, Text-to-Image", cvNotes:"More research-focused than my profile. Would need to emphasize ML/AI depth over full-stack.", coverNotes:"Generative AI interest. Applied ML at AirJustice. Learning PyTorch.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"PhD preferred. More research-oriented. Berlin office."},
+  {id:20, priority:"Low", company:"DATATRONiQ", role:"Senior Data Scientist", location:"Berlin", salary:"Not specified", source:"BerlinStartupJobs", url:"https://berlinstartupjobs.com/skill-areas/ai/", contact:"", contactEmail:"", skillsMatch:"Python, ML, Deep Learning, Kubernetes, Docker", cvNotes:"Data science focus. Show Python/ML skills and infrastructure experience.", coverNotes:"Applied ML/AI engineer with production deployment experience.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"Data scientist role. May be less LLM-focused."},
+  {id:21, priority:"High", company:"Zapier", role:"Sr. Applied AI Engineer (AI Platform)", location:"Remote (Americas/EMEA)", salary:"Not specified (Staff range typically $190K-275K)", source:"Ashby", url:"https://jobs.ashbyhq.com/zapier/38434b88-086c-424b-8d18-8d006e0b71b8", contact:"", contactEmail:"", skillsMatch:"Python, LLMOps, MLOps, LLM proxy, observability, evaluation, distributed systems", cvNotes:"Lead with AirJustice production LLM deployment, Azure OpenAI integration, eval/monitoring work. Highlight 11+ years SE + LLM platform mindset.", coverNotes:"7+ years SE with 3+ on production AI/ML platforms. Built LLM observability and eval at AirJustice. Async-friendly remote-first.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"[NEW May 2026] Multiple openings across 4 AI Platform teams. Requires 7+ yrs SE + 2+ yrs LLMOps. Fully remote, async culture."},
+  {id:22, priority:"High", company:"SmarterDx", role:"Senior Software Engineer, Machine Learning", location:"Remote (USA)", salary:"$190K-$230K + equity", source:"Greenhouse", url:"https://job-boards.greenhouse.io/smarterdx/jobs/4729710007", contact:"", contactEmail:"", skillsMatch:"Python, SQL, PyTorch, AWS/SageMaker, Docker/K8s, MLOps, NLP, Healthcare AI", cvNotes:"Health domain (Doxy.me, Pavilion) + AirJustice LLM/RAG production experience. AWS infrastructure from Pavilion. NLP/document processing parallel to clinical text.", coverNotes:"Clinical AI = perfect fit: telemedicine background + current LLM-on-documents work at AirJustice. 5+ yrs ML/MLOps with prod deploys.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"[NEW May 2026] Clinical AI for hospital revenue. 5+ yrs ML required. Remote US only, no visa sponsorship. Stack: Python/PyTorch/Airflow/Snowflake/dbt/AWS/MLflow/SageMaker/Terraform/K8s."},
+  {id:23, priority:"High", company:"SmarterDx", role:"Staff Software Engineer, Machine Learning", location:"Remote (USA)", salary:"$230K-$270K + equity", source:"Greenhouse", url:"https://job-boards.greenhouse.io/smarterdx/jobs/4730428007", contact:"", contactEmail:"", skillsMatch:"Python, SQL, PyTorch, AWS, MLOps, NLP, Deep Learning, Production LLM, Mentorship", cvNotes:"Pitch as Staff: 11+ yrs SE + Doxy.me team lead (8 engineers) + AirJustice LLM production. Hits the 10+ yrs bar with leadership.", coverNotes:"10+ yrs SE w/ ML focus. Led 8-engineer team, deployed LLM systems to production at AirJustice, healthtech background.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"[NEW May 2026] Same stack as id:22 but Staff level. Requires 10+ yrs dev experience with ML focus. Remote US only, no sponsorship."},
+  {id:24, priority:"High", company:"Microsoft AI", role:"Member of Technical Staff — Retrieval-Augmented Generation (RAG)", location:"Mountain View, CA (3 days onsite)", salary:"$139.9K-$304.2K (IC5/IC6, SF Bay)", source:"Microsoft Careers", url:"https://apply.careers.microsoft.com/careers/job/1970393556643070", contact:"", contactEmail:"", skillsMatch:"Python/C++/Java, RAG, embeddings, retrieval, ranking, LLM at scale, distributed systems", cvNotes:"Direct RAG work at AirJustice. 11+ yrs SE. Need to address visa/relocation to Mountain View.", coverNotes:"Building production RAG at AirJustice. Embedding/retrieval/ranking experience for legal documents. Excited by Copilot memory/personalization.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"[NEW May 2026] Building Copilot memory/personalization. 6+ yrs SE + 4+ yrs APIs/pipelines + ML/LLM at scale. Onsite 3d/wk Mountain View — relocation/visa needed."},
+  {id:25, priority:"Medium", company:"WITHIN", role:"AI Engineer (Internal Agent Platform)", location:"Long Island City, NY (Hybrid)", salary:"$90.9K-$254.1K", source:"Greenhouse", url:"https://job-boards.greenhouse.io/agencywithin/jobs/5056863007", contact:"", contactEmail:"", skillsMatch:"Python, LLM APIs (OpenAI/Anthropic/Vertex), tool calling, structured outputs, SQL, GCP/AWS/Azure, agents", cvNotes:"Agentic systems + LLM API integration from AirJustice. Strong Python + cloud. Address NY hybrid (visa/relocation).", coverNotes:"Building agentic AI platforms at AirJustice with OpenAI/Anthropic/Azure. Tool calling, structured outputs, multi-turn conversations.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"[NEW May 2026] Internal AI agent platform serving 200-500 employees. 5 experience levels in salary band. Hybrid in NY — visa/relocation required."},
+  {id:26, priority:"Medium", company:"Pinnipedia Technologies", role:"AI Engineer (LLMs + Knowledge Graphs)", location:"Berlin (Hybrid)", salary:"€60K-€85K", source:"Arbeitnow", url:"https://www.arbeitnow.com/jobs/companies/pinnipedia-technologies-gmbh/ai-engineer-llms-knowledge-graphs-berlin-152166", contact:"", contactEmail:"", skillsMatch:"Python, RAG, Knowledge Graphs, ontologies, evaluation, data engineering", cvNotes:"RAG pipelines + document/legal ontology work at AirJustice. Berlin-based — perfect timezone/location.", coverNotes:"Building RAG pipelines for legal-document graphs at AirJustice. Berlin-based. Strong Python + retrieval evaluation.", stage:"New", appliedDate:"", followUp:"", interviewNotes:"", notes:"[NEW May 2026] IT-security concept generation startup. Hybrid Berlin, occasional onsite. Salary on the lower end vs. seniority — negotiate."}
+];
+
+// ============================================================
+// STATE
+// ============================================================
+
+let jobs = [];
+let sortKey = null;
+let sortDir = 0; // 0=none, 1=asc, -1=desc
+let activeFilter = "all";
+let selectedJobId = null;
+let colWidths = {};
+let saveTimeout = null;
+
+// ============================================================
+// APPLICATION FOLDER HELPERS
+// ============================================================
+
+function slugify(str) {
+  return String(str || "").toLowerCase()
+    .replace(/[()&]/g, " ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+function jobSlug(job) {
+  return `${String(job.id).padStart(2, "0")}-${slugify(job.company)}`;
+}
+function appPath(job) { return `applications/${jobSlug(job)}/`; }
+function cvPath(job) { return appPath(job) + "cv.md"; }
+function coverPath(job) { return appPath(job) + "cover-letter.md"; }
+function openLocal(rel) { window.open("../" + rel, "_blank"); }
+function copyText(t) {
+  if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(t);
+  const ta = document.createElement("textarea");
+  ta.value = t; document.body.appendChild(ta); ta.select();
+  try { document.execCommand("copy"); } catch (e) {}
+  document.body.removeChild(ta);
+  return Promise.resolve();
+}
+
+function buildScaffoldCmd(job) {
+  const folder = appPath(job);
+  return `mkdir -p ${folder} && cp applications/_template/cv.md ${folder}cv.md && cp applications/_template/cover-letter.md ${folder}cover-letter.md && echo "Created ${folder}"`;
+}
+
+function buildAIPrompt(job, kind) {
+  const isCV = kind === "cv";
+  const tplPath = isCV ? "applications/_template/cv.md" : "applications/_template/cover-letter.md";
+  const outPath = isCV ? cvPath(job) : coverPath(job);
+  const notes = isCV ? (job.cvNotes || "") : (job.coverNotes || "");
+  const what = isCV ? "CV" : "cover letter";
+  const len = isCV ? "Keep to one page." : "Keep to ~250 words.";
+  return `Tailor my ${what} for this role.
+
+Company: ${job.company}
+Role: ${job.role}
+Location: ${job.location || "(not specified)"}
+Salary: ${job.salary || "(not specified)"}
+JD URL: ${job.url || "(none)"}
+Skills they want: ${job.skillsMatch || "(not listed)"}
+Tailoring notes: ${notes || "(none)"}
+
+Use the markdown template at ${tplPath} as the structure. Replace every {{TOKEN}} placeholder. ${len} Output only the final markdown — I'll save it to ${outPath}.`;
+}
+
+function normalizeJobs(arr) {
+  arr.forEach(j => {
+    if (j.cvStatus === undefined) j.cvStatus = "None";
+    if (j.coverStatus === undefined) j.coverStatus = "None";
+  });
+  return arr;
+}
+
+function onMaterialClick(e, id, kind) {
+  e.stopPropagation();
+  const job = jobs.find(j => j.id === id);
+  if (!job) return;
+  const status = (kind === "cv" ? job.cvStatus : job.coverStatus) || "None";
+  const path = kind === "cv" ? cvPath(job) : coverPath(job);
+  if (status === "None" || e.altKey) {
+    copyText(buildAIPrompt(job, kind)).then(() =>
+      showToast(`${kind === "cv" ? "CV" : "Cover"} prompt copied — paste in Claude/ChatGPT, save output to ${path}`)
+    );
+  } else {
+    // HEAD-check the file; if missing, fall back to copying the scaffold command
+    fetch("../" + path, { method: "HEAD" }).then(r => {
+      if (r.ok) openLocal(path);
+      else copyText(buildScaffoldCmd(job)).then(() =>
+        showToast(`${path} not found — scaffold cmd copied. Paste in terminal at repo root, then click Open again.`)
+      );
+    }).catch(() => openLocal(path));
+  }
+}
+
+async function refreshFromDisk(silent) {
+  try {
+    const resp = await fetch("jobs-status.json?_=" + Date.now());
+    if (!resp.ok) throw new Error("HTTP " + resp.status + " — run `npm run sync` first");
+    const map = await resp.json();
+    let touched = 0;
+    jobs.forEach(j => {
+      const s = map[j.id];
+      if (!s) return;
+      // Only upgrade None → Draft; preserve user-set Final.
+      if ((j.cvStatus || "None") === "None" && s.cvStatus && s.cvStatus !== "None") { j.cvStatus = s.cvStatus; touched++; }
+      if ((j.coverStatus || "None") === "None" && s.coverStatus && s.coverStatus !== "None") { j.coverStatus = s.coverStatus; touched++; }
+    });
+    forceSave();
+    renderTable();
+    renderStats();
+    if (!silent) showToast(`Refreshed ${touched} status field(s) from disk`);
+  } catch (e) {
+    if (!silent) showToast("Refresh failed: " + e.message);
+    throw e;
+  }
+}
+
+function onMatStatusChange(id, kind, value) {
+  const job = jobs.find(j => j.id === id);
+  if (!job) return;
+  if (kind === "cv") job.cvStatus = value; else job.coverStatus = value;
+  scheduleSave();
+  renderTable();
+  renderStats();
+}
+
+function init() {
+  // Theme
+  const savedTheme = localStorage.getItem("jt_theme");
+  if (savedTheme) {
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+
+  // Load data
+  const saved = localStorage.getItem("jt_jobs");
+  if (saved) {
+    try { jobs = JSON.parse(saved); } catch(e) { jobs = [...SEED_DATA]; }
+  } else {
+    jobs = [...SEED_DATA];
+  }
+  normalizeJobs(jobs);
+
+  // Load column widths
+  const savedW = localStorage.getItem("jt_colwidths");
+  if (savedW) try { colWidths = JSON.parse(savedW); } catch(e) {}
+
+  renderHead();
+  renderTable();
+  renderStats();
+
+  // Auto-refresh statuses from disk if served over http (silent on file://)
+  refreshFromDisk(true).catch(() => {});
+
+  // Save on page unload
+  window.addEventListener("beforeunload", forceSave);
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+
+function renderHead() {
+  const thead = document.getElementById("tableHead");
+  let html = "<tr>";
+  COLUMNS.forEach((col, i) => {
+    const w = colWidths[col.key] || col.width;
+    const arrow = sortKey === col.key ? (sortDir === 1 ? "&#9650;" : "&#9660;") : "&#9650;";
+    const arrowClass = sortKey === col.key ? "active" : "";
+    if (col.type === "checkbox") {
+      html += `<th style="width:${w}px;min-width:${w}px;"><div class="th-inner"><input type="checkbox" class="row-check" onchange="toggleAll(this)"></div></th>`;
+    } else {
+      html += `<th style="width:${w}px;min-width:40px;" data-col="${col.key}">
+        <div class="th-inner" onclick="sortBy('${col.key}')">
+          ${col.label} <span class="sort-arrow ${arrowClass}">${arrow}</span>
+        </div>
+        <div class="resize-handle" onmousedown="startResize(event, ${i})"></div>
+      </th>`;
+    }
+  });
+  html += "</tr>";
+  thead.innerHTML = html;
+}
+
+function renderTable() {
+  const tbody = document.getElementById("tableBody");
+  const search = document.getElementById("globalSearch").value.toLowerCase();
+  let filtered = filterJobs(jobs);
+
+  if (search) {
+    filtered = filtered.filter(j => {
+      return Object.values(j).some(v => String(v).toLowerCase().includes(search));
+    });
+  }
+
+  if (sortKey && sortDir !== 0) {
+    filtered.sort((a, b) => {
+      let va = (a[sortKey] || "").toString().toLowerCase();
+      let vb = (b[sortKey] || "").toString().toLowerCase();
+      if (sortKey === "priority") {
+        const ord = { high: 0, medium: 1, low: 2 };
+        va = ord[va] ?? 9;
+        vb = ord[vb] ?? 9;
+      }
+      if (va < vb) return -1 * sortDir;
+      if (va > vb) return 1 * sortDir;
+      return 0;
+    });
+  }
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="${COLUMNS.length}" class="empty-state">No jobs match your filters. Try adjusting or add a new job.</td></tr>`;
+    return;
+  }
+
+  let html = "";
+  filtered.forEach(job => {
+    const isSelected = job.id === selectedJobId;
+    html += `<tr class="${isSelected ? 'selected' : ''}" data-id="${job.id}">`;
+    COLUMNS.forEach(col => {
+      if (col.type === "checkbox") {
+        html += `<td><input type="checkbox" class="row-check" data-id="${job.id}" ${job._checked ? "checked" : ""}></td>`;
+      } else if (col.type === "priority") {
+        const cls = `priority-${(job.priority||"Medium").toLowerCase()}`;
+        html += `<td><select class="stage-select ${cls}" onchange="updateField(${job.id},'priority',this.value);renderTable()">
+          ${["High","Medium","Low"].map(p => `<option value="${p}" ${job.priority===p?"selected":""}>${p === "High" ? "&#11088; " : ""}${p}</option>`).join("")}
+        </select></td>`;
+      } else if (col.type === "stage") {
+        const sc = STAGE_CLASSES[job.stage] || "stage-new";
+        html += `<td><select class="stage-select stage-pill ${sc}" onchange="updateField(${job.id},'stage',this.value);renderTable();renderStats()">
+          ${STAGES.map(s => `<option value="${s}" ${job.stage===s?"selected":""}>${s}</option>`).join("")}
+        </select></td>`;
+      } else if (col.type === "materials") {
+        const cv = job.cvStatus || "None";
+        const co = job.coverStatus || "None";
+        html += `<td class="materials-cell" onclick="event.stopPropagation()">
+          <button class="mat-btn mat-${cv.toLowerCase()}" title="${cv === "None" ? "Click to copy AI prompt for CV" : "Open " + cvPath(job) + " (alt-click to copy prompt)"}" onclick="onMaterialClick(event, ${job.id}, 'cv')">${MAT_ICON[cv]} CV</button>
+          <button class="mat-btn mat-${co.toLowerCase()}" title="${co === "None" ? "Click to copy AI prompt for cover letter" : "Open " + coverPath(job) + " (alt-click to copy prompt)"}" onclick="onMaterialClick(event, ${job.id}, 'cover')">${MAT_ICON[co]} Cover</button>
+        </td>`;
+      } else if (col.type === "link") {
+        html += `<td>${job.url ? `<a href="${escHtml(job.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Open &#8599;</a>` : ""}</td>`;
+      } else if (col.type === "date") {
+        html += `<td><input type="date" value="${escHtml(job[col.key]||"")}" data-id="${job.id}" data-key="${col.key}" onchange="onDateEdit(this)" onclick="event.stopPropagation()"></td>`;
+      } else {
+        html += `<td contenteditable="true" data-id="${job.id}" data-key="${col.key}" onblur="onCellEdit(this)">${escHtml(job[col.key]||"")}</td>`;
+      }
+    });
+    html += "</tr>";
+  });
+  tbody.innerHTML = html;
+
+  // Row click for CV panel
+  tbody.querySelectorAll("tr").forEach(tr => {
+    tr.addEventListener("click", e => {
+      if (e.target.tagName === "INPUT" || e.target.tagName === "SELECT" || e.target.tagName === "A" || e.target.isContentEditable) return;
+      const id = parseInt(tr.dataset.id);
+      openPanel(id);
+    });
+  });
+
+  // Checkbox changes
+  tbody.querySelectorAll("input.row-check").forEach(cb => {
+    cb.addEventListener("change", () => {
+      const id = parseInt(cb.dataset.id);
+      const j = jobs.find(x => x.id === id);
+      if (j) j._checked = cb.checked;
+    });
+  });
+}
+
+function renderStats() {
+  const bar = document.getElementById("statsBar");
+  const total = jobs.length;
+  const byStage = {};
+  STAGES.forEach(s => byStage[s] = 0);
+  jobs.forEach(j => { byStage[j.stage] = (byStage[j.stage]||0) + 1; });
+  const usa = jobs.filter(j => /usa|remote.*usa|united states|california|ca$|ny|new york|philadelphia|san francisco|palo alto|dallas/i.test(j.location)).length;
+  const berlin = jobs.filter(j => /berlin/i.test(j.location)).length;
+
+  const cvFinal = jobs.filter(j => j.cvStatus === "Final").length;
+  const coverFinal = jobs.filter(j => j.coverStatus === "Final").length;
+
+  let html = `<div class="stat-card"><div class="stat-num">${total}</div><div class="stat-label">Total</div></div>`;
+  html += `<div class="stat-card"><div class="stat-num">${usa}</div><div class="stat-label">USA</div></div>`;
+  html += `<div class="stat-card"><div class="stat-num">${berlin}</div><div class="stat-label">Berlin</div></div>`;
+  html += `<div class="stat-card"><div class="stat-num">${cvFinal}</div><div class="stat-label">CV Final</div></div>`;
+  html += `<div class="stat-card"><div class="stat-num">${coverFinal}</div><div class="stat-label">Cover Final</div></div>`;
+  STAGES.forEach(s => {
+    if (byStage[s] > 0 || s === "New" || s === "Applied") {
+      html += `<div class="stat-card"><div class="stat-num">${byStage[s]}</div><div class="stat-label">${s}</div></div>`;
+    }
+  });
+  bar.innerHTML = html;
+}
+
+// ============================================================
+// FILTERS
+// ============================================================
+
+function filterJobs(data) {
+  if (activeFilter === "all") return [...data];
+  if (activeFilter === "usa") return data.filter(j => /usa|remote.*usa|united states|california|ca$|ny|new york|philadelphia|san francisco|palo alto|worldwide|dallas/i.test(j.location));
+  if (activeFilter === "berlin") return data.filter(j => /berlin/i.test(j.location));
+  if (activeFilter === "remote") return data.filter(j => /remote|worldwide/i.test(j.location));
+  if (activeFilter === "legaltech") return data.filter(j => /legal|law|attorney|prosecution/i.test(j.company + j.role + j.notes + j.skillsMatch));
+  if (activeFilter === "high") return data.filter(j => j.priority === "High");
+  const isActive = (j) => !["Rejected","Withdrawn","Offer"].includes(j.stage);
+  if (activeFilter === "needs-cv") return data.filter(j => isActive(j) && (j.cvStatus || "None") === "None");
+  if (activeFilter === "needs-cover") return data.filter(j => isActive(j) && (j.coverStatus || "None") === "None");
+  if (activeFilter === "cv-final") return data.filter(j => j.cvStatus === "Final");
+  return [...data];
+}
+
+function setFilter(filter, btn) {
+  activeFilter = filter;
+  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  renderTable();
+}
+
+// ============================================================
+// SORTING
+// ============================================================
+
+function sortBy(key) {
+  if (sortKey === key) {
+    sortDir = sortDir === 1 ? -1 : sortDir === -1 ? 0 : 1;
+  } else {
+    sortKey = key;
+    sortDir = 1;
+  }
+  if (sortDir === 0) sortKey = null;
+  renderHead();
+  renderTable();
+}
+
+// ============================================================
+// EDITING
+// ============================================================
+
+function onCellEdit(cell) {
+  const id = parseInt(cell.dataset.id);
+  const key = cell.dataset.key;
+  const val = cell.textContent;
+  updateField(id, key, val);
+}
+
+function onDateEdit(input) {
+  const id = parseInt(input.dataset.id);
+  const key = input.dataset.key;
+  updateField(id, key, input.value);
+}
+
+function updateField(id, key, val) {
+  const job = jobs.find(j => j.id === id);
+  if (job) {
+    job[key] = val;
+    scheduleSave();
+  }
+}
+
+function forceSave() {
+  if (saveTimeout) clearTimeout(saveTimeout);
+  localStorage.setItem("jt_jobs", JSON.stringify(jobs));
+  document.getElementById("saveStatus").textContent = "Saved";
+}
+
+function scheduleSave() {
+  if (saveTimeout) clearTimeout(saveTimeout);
+  document.getElementById("saveStatus").textContent = "Saving...";
+  saveTimeout = setTimeout(() => {
+    forceSave();
+    showToast("Changes saved");
+  }, 500);
+}
+
+// ============================================================
+// COLUMN RESIZE
+// ============================================================
+
+let resizeCol = null;
+let resizeStartX = 0;
+let resizeStartW = 0;
+
+function startResize(e, colIndex) {
+  e.preventDefault();
+  e.stopPropagation();
+  resizeCol = colIndex;
+  const th = document.querySelectorAll("#tableHead th")[colIndex];
+  resizeStartX = e.clientX;
+  resizeStartW = th.offsetWidth;
+  th.querySelector(".resize-handle").classList.add("dragging");
+  document.addEventListener("mousemove", onResize);
+  document.addEventListener("mouseup", stopResize);
+}
+
+function onResize(e) {
+  if (resizeCol === null) return;
+  const diff = e.clientX - resizeStartX;
+  const newW = Math.max(40, resizeStartW + diff);
+  const th = document.querySelectorAll("#tableHead th")[resizeCol];
+  th.style.width = newW + "px";
+  th.style.minWidth = newW + "px";
+  colWidths[COLUMNS[resizeCol].key] = newW;
+}
+
+function stopResize() {
+  if (resizeCol !== null) {
+    const th = document.querySelectorAll("#tableHead th")[resizeCol];
+    const handle = th.querySelector(".resize-handle");
+    if (handle) handle.classList.remove("dragging");
+  }
+  resizeCol = null;
+  document.removeEventListener("mousemove", onResize);
+  document.removeEventListener("mouseup", stopResize);
+  localStorage.setItem("jt_colwidths", JSON.stringify(colWidths));
+}
+
+// ============================================================
+// CRUD
+// ============================================================
+
+function openAddModal() { document.getElementById("addModal").classList.add("open"); }
+function closeAddModal() { document.getElementById("addModal").classList.remove("open"); }
+
+function addJob() {
+  const company = document.getElementById("addCompany").value.trim();
+  const role = document.getElementById("addRole").value.trim();
+  if (!company || !role) { showToast("Company and Role are required"); return; }
+
+  const maxId = jobs.reduce((m, j) => Math.max(m, j.id), 0);
+  jobs.push({
+    id: maxId + 1,
+    priority: document.getElementById("addPriority").value,
+    company,
+    role,
+    location: document.getElementById("addLocation").value.trim(),
+    salary: document.getElementById("addSalary").value.trim(),
+    source: document.getElementById("addSource").value.trim(),
+    url: document.getElementById("addUrl").value.trim(),
+    contact: "",
+    contactEmail: "",
+    skillsMatch: document.getElementById("addSkills").value.trim(),
+    cvNotes: "",
+    coverNotes: "",
+    stage: "New",
+    appliedDate: "",
+    followUp: "",
+    interviewNotes: "",
+    notes: document.getElementById("addNotes").value.trim(),
+    cvStatus: "None",
+    coverStatus: "None"
+  });
+
+  closeAddModal();
+  ["addCompany","addRole","addLocation","addSalary","addUrl","addSkills","addNotes"].forEach(id => document.getElementById(id).value = "");
+  document.getElementById("addSource").value = "LinkedIn";
+  scheduleSave();
+  renderTable();
+  renderStats();
+  showToast("Job added");
+}
+
+function deleteSelected() {
+  const toDelete = jobs.filter(j => j._checked).map(j => j.id);
+  if (toDelete.length === 0) { showToast("Select rows first"); return; }
+  if (!confirm(`Delete ${toDelete.length} job(s)?`)) return;
+  jobs = jobs.filter(j => !toDelete.includes(j.id));
+  scheduleSave();
+  renderTable();
+  renderStats();
+  showToast(`${toDelete.length} job(s) deleted`);
+}
+
+function toggleAll(master) {
+  const checked = master.checked;
+  jobs.forEach(j => j._checked = checked);
+  renderTable();
+}
+
+// ============================================================
+// CSV EXPORT/IMPORT
+// ============================================================
+
+function exportCSV() {
+  const visibleKeys = COLUMNS.filter(c => c.type !== "checkbox" && c.type !== "materials").map(c => c.key);
+  const labelFor = (k) => (COLUMNS.find(c => c.key === k) || EXTRA_CSV_KEYS.find(c => c.key === k)).label;
+  const keys = [...visibleKeys, ...EXTRA_CSV_KEYS.map(c => c.key)];
+  const header = keys.map(labelFor).join(",");
+  const rows = jobs.map(j => keys.map(k => `"${(j[k]||"").toString().replace(/"/g, '""')}"`).join(","));
+  const csv = [header, ...rows].join("\n");
+  const blob = new Blob([csv], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `job_tracker_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast("CSV exported");
+}
+
+function importCSV(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const lines = e.target.result.split("\n").filter(l => l.trim());
+    if (lines.length < 2) { showToast("Empty CSV"); return; }
+    const headers = parseCSVLine(lines[0]);
+    const visibleCols = COLUMNS.filter(c => c.type !== "checkbox" && c.type !== "materials");
+    const allCols = [...visibleCols, ...EXTRA_CSV_KEYS];
+    const keys = allCols.map(c => c.key);
+    const labels = allCols.map(c => c.label);
+    const maxId = jobs.reduce((m, j) => Math.max(m, j.id), 0);
+    let added = 0;
+
+    for (let i = 1; i < lines.length; i++) {
+      const vals = parseCSVLine(lines[i]);
+      if (vals.length < 2) continue;
+      const job = { id: maxId + i, stage: "New", priority: "Medium", cvStatus: "None", coverStatus: "None" };
+      headers.forEach((h, idx) => {
+        const ki = labels.indexOf(h);
+        if (ki >= 0) job[keys[ki]] = vals[idx] || "";
+      });
+      if (job.company || job.role) {
+        jobs.push(job);
+        added++;
+      }
+    }
+
+    scheduleSave();
+    renderTable();
+    renderStats();
+    showToast(`Imported ${added} jobs`);
+    event.target.value = "";
+  };
+  reader.readAsText(file);
+}
+
+function parseCSVLine(line) {
+  const result = [];
+  let current = "";
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') {
+      if (inQuotes && line[i+1] === '"') { current += '"'; i++; }
+      else inQuotes = !inQuotes;
+    } else if (ch === ',' && !inQuotes) {
+      result.push(current.trim());
+      current = "";
+    } else {
+      current += ch;
+    }
+  }
+  result.push(current.trim());
+  return result;
+}
+
+// ============================================================
+// CV MATCH PANEL
+// ============================================================
+
+function openPanel(jobId) {
+  selectedJobId = jobId;
+  const job = jobs.find(j => j.id === jobId);
+  if (!job) return;
+
+  document.getElementById("panelTitle").textContent = `${job.company} — ${job.role}`;
+  const body = document.getElementById("panelBody");
+
+  const jobSkills = (job.skillsMatch || "").split(/[,;]/).map(s => s.trim().toLowerCase()).filter(Boolean);
+  const allMySkills = [...CV_DATA.coreSkills, ...CV_DATA.aiSkills, ...CV_DATA.additionalTech].map(s => s.toLowerCase());
+
+  const matched = [];
+  const gaps = [];
+
+  jobSkills.forEach(sk => {
+    const found = allMySkills.some(ms => ms.includes(sk) || sk.includes(ms));
+    if (found) matched.push(sk);
+    else gaps.push(sk);
+  });
+
+  const matchPct = jobSkills.length > 0 ? Math.round((matched.length / jobSkills.length) * 100) : 0;
+
+  // Generate CV bullet suggestions based on job
+  const bullets = generateBullets(job);
+
+  const folder = appPath(job);
+  const cvP = cvPath(job);
+  const coP = coverPath(job);
+  const cvSt = job.cvStatus || "None";
+  const coSt = job.coverStatus || "None";
+  const statusOptions = (cur) => MAT_STATUSES.map(s => `<option value="${s}" ${cur===s?"selected":""}>${s}</option>`).join("");
+
+  body.innerHTML = `
+    <div class="panel-section">
+      <h3>Customization</h3>
+      <p style="font-size:12px;color:var(--text-secondary);margin-bottom:10px;">
+        Folder: <code style="background:var(--bg);padding:2px 6px;border-radius:4px;">${folder}</code>
+        <button class="mat-action-btn" style="margin-left:6px;padding:2px 8px;font-size:11px;" onclick="copyText('${folder}').then(()=>showToast('Path copied'))">Copy path</button>
+        <button class="mat-action-btn" style="margin-left:4px;padding:2px 8px;font-size:11px;" onclick="copyText(buildScaffoldCmd(jobs.find(j=>j.id===${job.id}))).then(()=>showToast('Scaffold cmd copied — paste in terminal at repo root'))">Scaffold from template</button>
+      </p>
+      <div class="mat-detail-row">
+        <span class="mat-detail-label">CV</span>
+        <select class="mat-status-select" onchange="onMatStatusChange(${job.id},'cv',this.value);openPanel(${job.id})">${statusOptions(cvSt)}</select>
+        <div class="mat-detail-actions">
+          <button class="mat-action-btn ${cvSt!=="None"?"primary":""}" onclick="openLocal('${cvP}')" ${cvSt==="None"?"disabled style='opacity:0.5;cursor:not-allowed'":""}>Open ${cvSt!=="None"?"&#8599;":""}</button>
+          <button class="mat-action-btn" onclick="copyText(buildAIPrompt(jobs.find(j=>j.id===${job.id}),'cv')).then(()=>showToast('CV prompt copied'))">Copy AI prompt</button>
+        </div>
+      </div>
+      <div class="mat-detail-row">
+        <span class="mat-detail-label">Cover</span>
+        <select class="mat-status-select" onchange="onMatStatusChange(${job.id},'cover',this.value);openPanel(${job.id})">${statusOptions(coSt)}</select>
+        <div class="mat-detail-actions">
+          <button class="mat-action-btn ${coSt!=="None"?"primary":""}" onclick="openLocal('${coP}')" ${coSt==="None"?"disabled style='opacity:0.5;cursor:not-allowed'":""}>Open ${coSt!=="None"?"&#8599;":""}</button>
+          <button class="mat-action-btn" onclick="copyText(buildAIPrompt(jobs.find(j=>j.id===${job.id}),'cover')).then(()=>showToast('Cover prompt copied'))">Copy AI prompt</button>
+        </div>
+      </div>
+      <p style="font-size:11px;color:var(--text-secondary);margin-top:10px;">
+        Workflow: Copy AI prompt → paste into Claude/ChatGPT → save output to the path → set status to Draft/Final.
+      </p>
+    </div>
+
+    <div class="panel-section">
+      <h3>Job Details</h3>
+      <p style="font-size:13px;margin-bottom:4px;"><strong>${escHtml(job.company)}</strong> &mdash; ${escHtml(job.role)}</p>
+      <p style="font-size:13px;color:var(--text-secondary);">${escHtml(job.location)} ${job.salary ? '&middot; ' + escHtml(job.salary) : ''}</p>
+      ${job.url ? `<p style="margin-top:6px;"><a href="${escHtml(job.url)}" target="_blank" rel="noopener" style="color:var(--accent);font-size:13px;">View listing &#8599;</a></p>` : ''}
+    </div>
+
+    <div class="panel-section">
+      <h3>Skills Match &mdash; ${matchPct}%</h3>
+      <div style="background:var(--bg);border-radius:6px;height:8px;margin-bottom:12px;overflow:hidden;">
+        <div style="background:${matchPct > 70 ? '#10b981' : matchPct > 40 ? '#f59e0b' : '#ef4444'};height:100%;width:${matchPct}%;border-radius:6px;transition:width 0.5s ease;"></div>
+      </div>
+      <div style="margin-bottom:8px;">
+        <strong style="font-size:11px;color:var(--text-secondary);">MATCHING:</strong><br>
+        ${matched.map(s => `<span class="match-tag hit">${escHtml(s)}</span>`).join(" ") || '<span style="font-size:12px;color:var(--text-secondary);">No skills listed for this job</span>'}
+      </div>
+      ${gaps.length > 0 ? `<div>
+        <strong style="font-size:11px;color:var(--text-secondary);">GAPS TO ADDRESS:</strong><br>
+        ${gaps.map(s => `<span class="match-tag gap">${escHtml(s)}</span>`).join(" ")}
+      </div>` : ''}
+    </div>
+
+    <div class="panel-section">
+      <h3>Suggested CV Bullet Points</h3>
+      ${bullets.map(b => `<div class="bullet-suggestion">${escHtml(b)}</div>`).join("")}
+    </div>
+
+    <div class="panel-section">
+      <h3>Relevant Experience to Highlight</h3>
+      <ul>
+        ${getRelevantExperience(job).map(e => `<li><strong>${escHtml(e.company)}</strong> (${escHtml(e.role)}) &mdash; ${escHtml(e.reason)}</li>`).join("")}
+      </ul>
+    </div>
+
+    ${job.cvNotes ? `<div class="panel-section">
+      <h3>Your CV Notes</h3>
+      <p style="font-size:13px;">${escHtml(job.cvNotes)}</p>
+    </div>` : ''}
+
+    ${job.coverNotes ? `<div class="panel-section">
+      <h3>Cover Letter Strategy</h3>
+      <p style="font-size:13px;">${escHtml(job.coverNotes)}</p>
+    </div>` : ''}
+  `;
+
+  document.getElementById("panelOverlay").classList.add("open");
+  document.getElementById("cvPanel").classList.add("open");
+  renderTable();
+}
+
+function closePanel() {
+  selectedJobId = null;
+  document.getElementById("panelOverlay").classList.remove("open");
+  document.getElementById("cvPanel").classList.remove("open");
+  renderTable();
+}
+
+function generateBullets(job) {
+  const bullets = [];
+  const text = (job.skillsMatch + " " + job.role + " " + job.notes + " " + job.company).toLowerCase();
+
+  if (/legal|law|attorney|prosecution/.test(text)) {
+    bullets.push("Integrated Azure OpenAI LLMs into AirJustice legal platform, enabling automated analysis of prosecution documents and reducing attorney review time by streamlining document processing workflows.");
+    bullets.push("Designed and implemented RAG pipelines for legal knowledge retrieval, connecting LLM capabilities with domain-specific legal document repositories for context-aware AI responses.");
+  }
+
+  if (/rag|retrieval|vector|embedding/.test(text)) {
+    bullets.push("Architected end-to-end RAG (Retrieval-Augmented Generation) pipeline at AirJustice, including document ingestion, chunking strategies, embedding generation, and vector store integration for accurate legal document retrieval.");
+  }
+
+  if (/python/.test(text)) {
+    bullets.push("Developed Python-based AI backend services for document processing and LLM orchestration, integrating Azure OpenAI APIs with existing application infrastructure.");
+  }
+
+  if (/react|vue|frontend|full.?stack/.test(text)) {
+    bullets.push("Built full-stack AI-powered features end-to-end: from React/TypeScript frontend interfaces to Node.js backend services, with 11+ years of production web application experience across multiple SaaS products.");
+  }
+
+  if (/team|lead|manager|head/.test(text)) {
+    bullets.push("Led distributed engineering teams of up to 8 engineers across 3 organizations, establishing SDLC processes, code review culture, and improving team velocity by 40% at Only Sports.");
+  }
+
+  if (/llm|openai|azure|gpt|language.model/.test(text)) {
+    bullets.push("Hands-on experience integrating Azure OpenAI LLMs into production applications, including prompt engineering, context management, and response quality optimization for domain-specific use cases.");
+  }
+
+  if (/agent|agentic/.test(text)) {
+    bullets.push("Developing agentic AI workflows at AirJustice that autonomously process legal documents, extract key information, and assist attorneys with case preparation through multi-step LLM interactions.");
+  }
+
+  if (/health|medical|telemedicine/.test(text)) {
+    bullets.push("Scaled telemedicine platform Doxy.me from 50K to 1M users as Tech Lead, leading 8 engineers and reducing production bugs by 50% while maintaining HIPAA-compliant infrastructure.");
+  }
+
+  if (/cloud|aws|azure|gcp|docker|k8s|kubernetes/.test(text)) {
+    bullets.push("Extensive cloud infrastructure experience: AWS Lambda/AppSync/S3/CloudFormation, Azure OpenAI, Docker containerization, with CI/CD pipeline implementation across multiple production environments.");
+  }
+
+  if (/nlp|nlu|natural.language/.test(text)) {
+    bullets.push("Applied NLP techniques for legal document processing at AirJustice, including document classification, entity extraction, and semantic search over prosecution document corpora.");
+  }
+
+  if (bullets.length === 0) {
+    bullets.push("Senior Full-Stack Engineer with 11+ years of experience, currently specializing in LLM integration and AI-powered document analysis at AirJustice (Allometric).");
+    bullets.push("Proven track record of scaling production applications (50K to 1M users) and leading distributed engineering teams of up to 8 engineers.");
+  }
+
+  return bullets.slice(0, 5);
+}
+
+function getRelevantExperience(job) {
+  const text = (job.skillsMatch + " " + job.role + " " + job.notes + " " + job.company).toLowerCase();
+  const relevant = [];
+
+  relevant.push({ company: "Allometric (AirJustice)", role: "LLM Integration Engineer", reason: "Current role — Azure LLM integration, legal document analysis, RAG pipelines" });
+
+  if (/team|lead|manager|head|director/.test(text)) {
+    relevant.push({ company: "Doxy.me", role: "Team Lead / Tech Lead", reason: "Led 8-engineer team, scaled product to 1M users" });
+    relevant.push({ company: "Only Sports", role: "Head of Engineering", reason: "Led 6-engineer distributed team, 40% velocity improvement" });
+  }
+
+  if (/health|medical|clinical/.test(text)) {
+    relevant.push({ company: "Doxy.me", role: "Tech Lead", reason: "Telemedicine platform — health domain expertise" });
+    relevant.push({ company: "Pavilion Health", role: "Solution Lead", reason: "Medical data management systems" });
+  }
+
+  if (/saas|full.?stack|react|node/.test(text)) {
+    relevant.push({ company: "Yoffix", role: "Senior Full-Stack Engineer", reason: "Multi-tenant SaaS, GraphQL + Lambda" });
+  }
+
+  if (/3d|visualization|surgical/.test(text)) {
+    relevant.push({ company: "Materialise NV", role: "Software Engineer", reason: "3D surgical planning software" });
+  }
+
+  return relevant.slice(0, 4);
+}
+
+// ============================================================
+// THEME
+// ============================================================
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute("data-theme");
+  const next = current === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  localStorage.setItem("jt_theme", next);
+}
+
+// ============================================================
+// UTILITIES
+// ============================================================
+
+function escHtml(str) {
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2000);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+
+document.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
+</html>

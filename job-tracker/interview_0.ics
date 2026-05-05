@@ -1,0 +1,43 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:icalendar-ruby
+CALSCALE:GREGORIAN
+BEGIN:VTIMEZONE
+TZID:Europe/Berlin
+BEGIN:DAYLIGHT
+DTSTART:20260329T030000
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=3
+TZNAME:CEST
+END:DAYLIGHT
+BEGIN:STANDARD
+DTSTART:20251026T020000
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=10
+TZNAME:CET
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20251215T163225Z
+UID:b56cb751-cc66-4a72-a1ad-2df9aab5e27e
+DTSTART;TZID=Europe/Berlin:20251216T141500
+DTEND;TZID=Europe/Berlin:20251216T144500
+DESCRIPTION:Hi Vlad\,\n\nThanks for sending through your preferred intervie
+ w times! We’re happy to confirm that you’re now booked for an intervie
+ w on Tuesday December 16\, 2:15pm CET.\n\nThe interview will take place vi
+ a Google Meet. You can join from the links below.\nHere is the interview s
+ chedule:\n\nDate/Time: Dec 16\, 2025 2:15pm-2:45pm CET\nInterviewers: Raya
+  Madsamun\n\nGoogle Meet: https://meet.google.com/pta-bdyx-dtd\n\nIf you h
+ ave any questions\, please feel free to get in touch with me and I’ll be
+  more than happy to help! We have attached our Culture Deck again for you 
+ to have a read through beforehand.\n\nPlease confirm that you’ve receive
+ d this invitation and don't forget to double-check the timezone of your in
+ terview!\n\nPlease note: Your calendar invite is attached to this email. C
+ lick on it to add the event to your calendar.\n\nBest regards\,\nRaya Mads
+ amun\nSenior Tech Talent Acquisition Partner
+LOCATION:null
+SUMMARY:Interview with SumUp
+END:VEVENT
+END:VCALENDAR
