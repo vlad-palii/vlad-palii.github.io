@@ -877,7 +877,7 @@ async function openLocal(rel) {
   body { padding-top: 60px; }
   @media print { .topbar { display: none; } body { padding-top: 0; } }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"><\/script>
 </head>
 <body>
 <div class="topbar">
@@ -890,7 +890,7 @@ async function openLocal(rel) {
 <script>
   const src = ${JSON.stringify(md)};
   document.getElementById("root").innerHTML = marked.parse(src);
-</script>
+<\/script>
 </body></html>`);
   w.document.close();
 }
