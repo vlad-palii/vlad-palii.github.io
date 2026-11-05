@@ -10,7 +10,7 @@ export default function CV() {
           <div className='cv-header-info'>
             <h1>Vlad Palii</h1>
             <p className='cv-title'>
-              Senior Full-Stack Engineer | Engineering Lead
+              Applied AI Research Engineer | Senior Full-Stack Engineer
             </p>
             <p className='cv-personal'>
               Date of Birth: 18.08.1993 | Nationality: Ukrainian | Work Permit:
@@ -26,15 +26,16 @@ export default function CV() {
       {/* Profile Summary */}
       <section className='cv-profile'>
         <p>
-          Senior Full-Stack Engineer and Engineering Lead with 11+ years of
-          experience building web applications. Versatile T-shaped engineer
-          specialized in React, Node.js, TypeScript, and AWS serverless, with
-          broad exposure across the full stack. Proven track record leading
-          distributed teams (up to 8 engineers), establishing SDLC processes,
-          and delivering end-to-end features for SaaS products. Leverage
-          AI-assisted development (Cursor, Copilot, ChatGPT) daily to accelerate
-          delivery. Based in Berlin, open to senior full-stack or engineering
-          lead roles in product-driven companies.
+          Applied AI Research Engineer and Senior Full-Stack Engineer with 11+
+          years of experience building production software. Currently building
+          secure, high-throughput LLM systems for public-sector legal workflows
+          (digital discovery, entity extraction, case intelligence), with a
+          focus on rigorous LLM evaluation: eval harnesses, regression testing,
+          failure analysis, and LLM-as-a-judge. Strong full-stack foundation in
+          React, Node.js, TypeScript, and AWS serverless. Proven track record
+          leading distributed teams (up to 8 engineers) and establishing SDLC
+          processes. Based in Berlin, open to applied AI / LLM engineering
+          roles.
         </p>
       </section>
 
@@ -48,6 +49,40 @@ export default function CV() {
             <div className='cv-job'>
               <div className='cv-job-header'>
                 <div>
+                  <h3>GovTech / Legal AI</h3>
+                  <p className='cv-job-location'>Denver, USA / Remote</p>
+                  <p className='cv-job-description'>
+                    Secure, high-throughput LLM systems for public-sector legal
+                    workflows.
+                  </p>
+                </div>
+                <span className='cv-job-date'>2026–Present</span>
+              </div>
+              <h4>Applied AI Research Engineer (Contract)</h4>
+              <ul>
+                <li>
+                  Build secure, high-throughput LLM systems for digital
+                  discovery, entity extraction, and case intelligence
+                </li>
+                <li>
+                  Design LLM evaluation harnesses and datasets: regression
+                  testing, failure analysis, task-success metrics,
+                  LLM-as-a-judge
+                </li>
+                <li>
+                  Apply RAG, OCR, and Schema-Guided Reasoning (SGR) to legal
+                  document workflows on Azure OpenAI Service
+                </li>
+              </ul>
+              <p className='cv-job-tech'>
+                Azure OpenAI Service, LLM Systems Engineering, RAG, OCR,
+                Schema-Guided Reasoning (SGR), LLM Evals.
+              </p>
+            </div>
+
+            <div className='cv-job'>
+              <div className='cv-job-header'>
+                <div>
                   <h3>Yoffix</h3>
                   <p className='cv-job-location'>Berlin, Germany / On-site</p>
                   <p className='cv-job-description'>
@@ -55,7 +90,7 @@ export default function CV() {
                     bookings.
                   </p>
                 </div>
-                <span className='cv-job-date'>2024–Present</span>
+                <span className='cv-job-date'>2024–2026</span>
               </div>
               <h4>Senior Full-Stack Engineer</h4>
               <ul>
@@ -314,18 +349,24 @@ export default function CV() {
           <section className='cv-sidebar-section'>
             <h2 className='cv-sidebar-title'>Skills</h2>
 
+            <h3>AI / LLM</h3>
+            <p>
+              Azure OpenAI Service, LLM Systems Engineering, RAG, OCR,
+              Schema-Guided Reasoning (SGR), LLM Evaluation (eval harnesses,
+              LLM-as-a-judge), OpenAI API
+            </p>
+
             <h3>Core Technologies</h3>
             <p>
               JavaScript, TypeScript, React, Node.js, Express.js, GraphQL, REST
               API, PostgreSQL, MySQL, MongoDB, DynamoDB, AWS (Lambda, AppSync,
-              Amplify, S3, CloudFormation), Docker, LinuxUod
+              Amplify, S3, CloudFormation), Docker, Linux
             </p>
 
             <h3>Also Worked With</h3>
             <p>
               Next.js, Angular, Vue.js, Golang, PHP, Java, Python, C#, Three.js,
-              Redis, Neo4j, Cassandra, GCP, CircleCI, GRPC, OpenAI API, Stripe,
-              Twilio
+              Redis, Neo4j, Cassandra, GCP, CircleCI, GRPC, Stripe, Twilio
             </p>
 
             <h3>Tools & Methods</h3>
